@@ -1,0 +1,28 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import { towns } from '../data/towns';
+
+const title = 'Service Areas in Marion County, FL | Marion County Septic';
+const description =
+  'Marion County, FL communities where we connect property owners with licensed local septic contractors, including Ocala, Belleview, Dunnellon, Silver Springs, and more.';
+---
+<BaseLayout title={title} description={description}>
+  <Breadcrumbs items={[{ name: 'Home', path: '/' }, { name: 'Service Areas', path: '/locations/' }]} />
+  <section class="container-narrow py-10">
+    <h1 class="font-heading text-3xl font-extrabold text-spring-dark sm:text-4xl">Service areas</h1>
+    <p class="mt-4 text-ink/85">
+      We connect property owners with licensed local septic contractors across
+      Marion County, Florida. Choose your area for local details.
+    </p>
+    <ul class="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-3">
+      {towns.filter((t) => t.ready).map((t) => (
+        <li>
+          <a class="block rounded-lg border border-sage bg-white px-4 py-3 font-heading font-semibold text-spring-dark hover:border-spring hover:text-spring" href={`/${t.slug}/`}>
+            {t.name}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </section>
+</BaseLayout>

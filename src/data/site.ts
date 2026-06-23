@@ -27,6 +27,23 @@ export const site = {
 } as const;
 
 /*
+  Operating address. COMPLIANCE_STANDARDS.md requires a REAL operating address
+  (not the Oregon registered-agent address) disclosed on the About or Contact
+  page before launch. It is intentionally left blank here because it must not be
+  invented. Fill it in and it will render on the About page automatically.
+  OPERATOR: this is a pre-launch requirement.
+*/
+export const address = {
+  line1: '',
+  line2: '',
+  city: '',
+  state: '',
+  zip: '',
+} as const;
+
+export const hasAddress = address.line1.length > 0;
+
+/*
   Phone number: SINGLE configurable value so the TextNow -> CallRail swap later
   is one change. Override at build time with PUBLIC_PHONE_DISPLAY / PUBLIC_PHONE_TEL
   (Cloudflare env vars) without touching code.

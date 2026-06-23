@@ -13,7 +13,10 @@ export default defineConfig({
     format: 'directory',
   },
   integrations: [
-    sitemap(),
+    sitemap({
+      // Keep noindex utility pages out of the sitemap.
+      filter: (page) => !page.includes('/thank-you/'),
+    }),
   ],
   vite: {
     plugins: [tailwindcss()],

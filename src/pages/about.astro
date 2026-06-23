@@ -1,0 +1,83 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { site, address, hasAddress, editorial } from '../data/site';
+import { buildProfessionalService } from '../lib/schema';
+
+const title = 'About Marion County Septic | A Free Contractor-Matching Service';
+const description =
+  'Marion County Septic is a free marketing and matching service operated by Compass Camper LLC that connects Marion County, FL property owners with licensed local septic contractors.';
+
+const schema = buildProfessionalService();
+---
+<BaseLayout title={title} description={description} schemas={[schema]}>
+  <Breadcrumbs items={[{ name: 'Home', path: '/' }, { name: 'About', path: '/about/' }]} />
+
+  <article class="container-narrow rich py-8">
+    <h1>About Marion County Septic</h1>
+
+    <p>
+      Marion County Septic is operated by Compass Camper LLC, an Oregon-registered
+      marketing company. We are not a septic contractor and do not perform septic
+      work. We are an information resource and a free matching service for property
+      owners in Marion County, Florida.
+    </p>
+
+    <h2>What we do</h2>
+    <p>
+      We operate this website to connect Marion County property owners with
+      licensed, insured septic contractors. When you submit a request, your
+      information is forwarded to a licensed local contractor who can schedule your
+      free quote. The service is free for property owners, and you are never
+      obligated to hire the contractor you are matched with.
+    </p>
+    <p>
+      We focus on planned, permitted work: new septic system installation, full
+      drainfield replacement, aerobic and advanced treatment systems, septic for
+      new construction, and real-estate septic inspections.
+    </p>
+
+    <h2>Who writes this site</h2>
+    <p>
+      Our guides and local pages are written and maintained by the
+      {editorial.author} and compiled from cited public sources, including the
+      Florida Department of Environmental Protection, the Florida Administrative
+      Code, the water management districts, and UF/IFAS. We link to those sources
+      so you can verify what you read. We do not publish reviews, testimonials, or
+      ratings, because we have none to claim and will not invent them.
+    </p>
+
+    <h2>What we ask of the contractors we match you with</h2>
+    <p>The independent contractors we connect property owners with are expected to:</p>
+    <ul>
+      <li>Hold current Florida contractor licensing where required.</li>
+      <li>Carry current general liability insurance.</li>
+      <li>Offer written workmanship warranties.</li>
+      <li>Provide transparent, itemized written estimates before performing any work.</li>
+    </ul>
+    <p>
+      Always confirm a contractor's current license and insurance before work
+      begins. Contractor license numbers are available upon request.
+    </p>
+
+    <h2>Who operates this site</h2>
+    <p>
+      {site.brandName} is operated by {site.entity.legalName} ({site.entity.state}),
+      a marketing and lead generation company. You can reach us by email at
+      <a class="link-inline" href={`mailto:${site.email}`}>{site.email}</a>.
+    </p>
+    {hasAddress && (
+      <p>
+        Mailing address: {address.line1}{address.line2 ? `, ${address.line2}` : ''},
+        {' '}{address.city}, {address.state} {address.zip}.
+      </p>
+    )}
+    {/*
+      OPERATOR: add the real operating address in src/data/site.ts (address).
+      COMPLIANCE_STANDARDS.md requires it disclosed on About or Contact before launch.
+    */}
+  </article>
+
+  <CtaBand />
+</BaseLayout>

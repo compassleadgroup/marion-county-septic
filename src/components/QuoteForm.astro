@@ -174,12 +174,9 @@ const redirectUrl = `${site.url}/thank-you/`;
         .then(function (r) { return r.json(); })
         .then(function (json) {
           if (json && json.success) {
-            if (typeof window.gtag === 'function') {
-              window.gtag('event', 'generate_lead', {
-                event_category: 'quote_form',
-                event_label: 'quote_request',
-              });
-            }
+            // The GA4 generate_lead conversion fires on /thank-you/ so that
+            // both the JS path and the no-JS native-redirect path are counted
+            // once. Keep the redirect here for a smooth on-site experience.
             window.location.href = redirectUrl;
           } else {
             if (status) {

@@ -1,0 +1,54 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import QuoteForm from '../components/QuoteForm.astro';
+import { site, phone } from '../data/site';
+
+const title = 'Contact | Marion County Septic';
+const description =
+  'Contact Marion County Septic to get matched with a licensed local septic contractor in Marion County, FL. Free, no-obligation quotes. Call or submit the quote form.';
+---
+<BaseLayout title={title} description={description}>
+  <Breadcrumbs items={[{ name: 'Home', path: '/' }, { name: 'Contact', path: '/contact/' }]} />
+
+  <section class="container-x py-10">
+    <div class="grid gap-10 lg:grid-cols-3">
+      <div class="lg:col-span-1">
+        <h1 class="font-heading text-3xl font-extrabold text-spring-dark sm:text-4xl">Contact us</h1>
+        <p class="mt-4 leading-relaxed text-ink/85">
+          {site.brandName} is a free service that connects {site.county} property
+          owners with licensed local septic contractors. Submit the form and we
+          forward your request to a licensed contractor who can schedule your
+          free, no-obligation quote.
+        </p>
+
+        <div class="mt-6 space-y-4">
+          <div>
+            <p class="text-xs font-semibold uppercase tracking-wide text-aqua">Phone</p>
+            <a class="mt-1 inline-block font-heading text-xl font-bold text-spring-dark hover:text-ochre-dark" href={`tel:${phone.tel}`}>
+              {phone.display}
+            </a>
+          </div>
+          <div>
+            <p class="text-xs font-semibold uppercase tracking-wide text-aqua">Email</p>
+            <a class="mt-1 inline-block link-inline" href={`mailto:${site.email}`}>{site.email}</a>
+          </div>
+          <div>
+            <p class="text-xs font-semibold uppercase tracking-wide text-aqua">When we respond</p>
+            <p class="mt-1 text-ink/85">We review quote requests every day. You can submit the form or call anytime.</p>
+          </div>
+        </div>
+
+        <p class="mt-6 rounded-lg bg-mist px-4 py-3 text-sm text-ink/80">
+          Please note: {site.brandName} is a marketing service, not a septic
+          contractor, and does not perform septic work. All work is performed by
+          independent licensed contractors.
+        </p>
+      </div>
+
+      <div class="lg:col-span-2">
+        <QuoteForm />
+      </div>
+    </div>
+  </section>
+</BaseLayout>

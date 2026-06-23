@@ -1,0 +1,70 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import { site } from '../data/site';
+
+const title = 'Disclosure | Marion County Septic';
+const description =
+  'How Marion County Septic works and earns revenue: a plain-language disclosure of our marketing and lead generation business model.';
+const updated = 'June 2026';
+---
+<BaseLayout title={title} description={description}>
+  <Breadcrumbs items={[{ name: 'Home', path: '/' }, { name: 'Disclosure', path: '/disclosure/' }]} />
+  <article class="container-narrow rich py-8">
+    <h1>Disclosure</h1>
+    <p>Last updated: {updated}</p>
+
+    <p>
+      We believe in being plain about what {site.brandName} is and how it works.
+    </p>
+
+    <h2>We are a marketing and matching service</h2>
+    <p>
+      {site.brandName} is operated by {site.entity.legalName} ({site.entity.state}),
+      a marketing and lead generation company. We are not a septic contractor, we
+      are not licensed to perform septic work, and we do not perform, supervise, or
+      warrant any septic work. Our role is to connect property owners with
+      independent, licensed local septic contractors.
+    </p>
+
+    <h2>How we earn revenue</h2>
+    <p>
+      We may be compensated by the contractors we connect property owners with,
+      for example through a referral or lead arrangement or a flat fee. This does
+      not add any cost to you. Using {site.brandName} is free for property owners,
+      and you are never obligated to hire a contractor we match you with.
+    </p>
+
+    <h2>What we share when you submit a request</h2>
+    <p>
+      When you submit a form, the information you provide is shared with one or
+      more licensed local septic contractors for the purpose of scheduling your
+      free quote. By submitting, you consent to be contacted as described on our
+      forms and in our <a class="link-inline" href="/privacy/">Privacy Policy</a>.
+      You can opt out at any time by replying STOP to any text or asking to be
+      removed during any call.
+    </p>
+
+    <h2>No reviews or fabricated claims</h2>
+    <p>
+      We do not publish customer reviews, ratings, testimonials, or claims of our
+      own experience performing septic work, because we do not perform septic work
+      and will not invent such claims. Any licensing, insurance, or warranty
+      language on this site refers to the independent contractors, not to us.
+    </p>
+
+    <h2>Verify before you rely</h2>
+    <p>
+      Our guides summarize permitting, springs, and cost information from public
+      sources and link to those sources. Rules and fees change. Always confirm
+      current requirements with the Florida Department of Environmental Protection
+      and verify any contractor's current license and insurance before work begins.
+    </p>
+
+    <h2>Contact</h2>
+    <p>
+      Questions can be sent to
+      <a class="link-inline" href={`mailto:${site.email}`}>{site.email}</a>.
+    </p>
+  </article>
+</BaseLayout>

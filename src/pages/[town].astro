@@ -1,0 +1,129 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import AreaFactBox from '../components/AreaFactBox.astro';
+import Callout from '../components/Callout.astro';
+import QuoteForm from '../components/QuoteForm.astro';
+import FaqBlock from '../components/FaqBlock.astro';
+import SourcesList from '../components/SourcesList.astro';
+import { phone } from '../data/site';
+import { towns, type Town } from '../data/towns';
+import { services } from '../data/services';
+import { backboneGuides } from '../data/guides';
+import { buildService } from '../lib/schema';
+
+export function getStaticPaths() {
+  return towns
+    .filter((t) => t.ready)
+    .map((t) => ({ params: { town: t.slug }, props: { town: t } }));
+}
+
+interface Props { town: Town; }
+const { town } = Astro.props;
+
+const url = `/${town.slug}/`;
+const schema = buildService({
+  name: `Septic services in ${town.name}, FL`,
+  url: new URL(url, Astro.site).href,
+  description: `Connecting ${town.name}, Marion County property owners with licensed local septic contractors for new system installation, drainfield replacement, and advanced treatment.`,
+  areaServedName: `${town.name}, Florida`,
+});
+
+const isVerify = town.bmapConfidence === 'verify';
+---
+<BaseLayout title={town.title} description={town.description} schemas={[schema]}>
+  <Breadcrumbs
+    items={[
+      { name: 'Home', path: '/' },
+      { name: 'Service Areas', path: '/locations/' },
+      { name: town.name, path: url },
+    ]}
+  />
+
+  <!-- Hero with fact box -->
+  <section class="container-x pb-4 pt-6">
+    <div class="grid gap-8 lg:grid-cols-3">
+      <div class="lg:col-span-2">
+        <h1 class="font-heading text-3xl font-extrabold leading-tight text-spring-dark sm:text-4xl">
+          Septic System Installation &amp; Drainfield Replacement in {town.name}, FL
+        </h1>
+        <p class="mt-3 text-lg font-medium text-aqua">{town.tagline}</p>
+        {town.intro.map((p) => (
+          <p class="mt-4 leading-relaxed text-ink/85">{p}</p>
+        ))}
+        <div class="mt-6 flex flex-wrap items-center gap-4">
+          <a class="btn-primary" href="#quote">Get a free quote</a>
+          <a class="btn-secondary" href={`tel:${phone.tel}`}>Call {phone.display}</a>
+        </div>
+      </div>
+      <div class="lg:col-span-1">
+        <AreaFactBox facts={town.facts} heading={`${town.name} snapshot`} />
+      </div>
+    </div>
+  </section>
+
+  <!-- Body -->
+  <div class="container-narrow rich py-8">
+    <h2>Septic in {town.name}</h2>
+    <p>{town.septicProfile}</p>
+
+    <h2>Springs protection and your septic system</h2>
+    {town.bmapStatus.map((p) => <p>{p}</p>)}
+    <Callout variant={isVerify ? 'verify' : 'springs'} title={isVerify ? 'Confirm your parcel' : 'What this means for your project'}>
+      <p>
+        {isVerify
+          ? 'Because a Priority Focus Area designation is what triggers the advanced-treatment requirement, confirm your specific parcel against the FDEP Priority Focus Area map. The licensed contractor you are matched with verifies it during the site evaluation.'
+          : 'Inside a Priority Focus Area, new and replacement systems must be enhanced nutrient-reducing (ENR) systems that cut total nitrogen by at least 65 percent. A licensed contractor confirms your parcel and designs accordingly.'}
+        {' '}
+        See our <a class="link-inline" href="/guides/springs-bmap-advanced-treatment-guide/">springs and BMAP guide</a>.
+      </p>
+    </Callout>
+
+    <h2>Soils and water table</h2>
+    <p>{town.soilNote}</p>
+
+    <h2>What is most in demand in {town.name}</h2>
+    <ul>
+      {town.demand.map((d) => <li>{d}</li>)}
+    </ul>
+
+    <SourcesList sources={town.sources} />
+  </div>
+
+  <!-- Services (links to all 6, required) -->
+  <section class="bg-mist/60">
+    <div class="container-x py-12">
+      <h2 class="font-heading text-2xl font-bold text-spring-dark">Septic services in {town.name}</h2>
+      <p class="mt-2 text-ink/80">We match {town.name} property owners with licensed local contractors for:</p>
+      <div class="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {services.map((s) => (
+          <a class="group rounded-xl border border-sage bg-white p-4 hover:border-spring" href={`/services/${s.slug}/`}>
+            <p class="font-heading font-semibold text-spring-dark group-hover:text-spring">{s.name}</p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Backbone guides (permit + springs, required) -->
+  <section class="container-x py-12">
+    <h2 class="font-heading text-2xl font-bold text-spring-dark">Helpful local guides</h2>
+    <div class="mt-6 grid gap-5 md:grid-cols-2">
+      {backboneGuides.map((g) => (
+        <a class="group rounded-xl border border-sage bg-white p-5 hover:border-spring" href={`/guides/${g.slug}/`}>
+          <p class="font-heading font-bold text-spring-dark group-hover:text-spring">{g.title}</p>
+          <p class="mt-1 text-sm text-ink/80">{g.cardSummary}</p>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <!-- Quote form -->
+  <section class="container-x pb-4">
+    <div class="mx-auto max-w-3xl">
+      <QuoteForm heading={`Get a free septic quote in ${town.name}`} />
+    </div>
+  </section>
+
+  {town.faqs.length > 0 && <FaqBlock faqs={town.faqs} heading={`${town.name} septic FAQ`} />}
+</BaseLayout>

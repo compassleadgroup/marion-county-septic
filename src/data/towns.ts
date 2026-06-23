@@ -477,7 +477,7 @@ export const towns: Town[] = [
     ],
     facts: [
       { label: 'Incorporated', value: '1905' },
-      { label: 'Population', value: '449 (2020 Census), one of the county smallest towns' },
+      { label: 'Population', value: '449 (2020 Census), among the smallest towns in the county' },
       { label: 'Character', value: 'Northwest Marion horse country, farms and acreage' },
       { label: 'Springs status', value: 'West of I-75; confirm Priority Focus Area status by parcel' },
     ],

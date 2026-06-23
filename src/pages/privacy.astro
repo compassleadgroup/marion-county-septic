@@ -1,0 +1,92 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import { site } from '../data/site';
+
+const title = 'Privacy Policy | Marion County Septic';
+const description =
+  'How Marion County Septic, operated by Compass Camper LLC, collects, uses, and shares the information you provide, and your privacy rights.';
+const updated = 'June 2026';
+---
+<BaseLayout title={title} description={description}>
+  <Breadcrumbs items={[{ name: 'Home', path: '/' }, { name: 'Privacy Policy', path: '/privacy/' }]} />
+  <article class="container-narrow rich py-8">
+    <h1>Privacy Policy</h1>
+    <p>Last updated: {updated}</p>
+
+    <p>
+      This website, {site.brandName} ({site.domain}), is operated by
+      {site.entity.legalName}, an {site.entity.state}-registered marketing and lead
+      generation company. This policy explains what information we collect, how we
+      use it, and the choices you have. We are a marketing service, not a septic
+      contractor, and we do not perform septic work.
+    </p>
+
+    <h2>Information we collect</h2>
+    <ul>
+      <li>Contact details you provide, such as your name, phone number, and email address.</li>
+      <li>Property information you provide, such as your town or area, property or lot status, project type, timeline, and any description you submit.</li>
+      <li>Technical data collected automatically, such as your IP address, device and browser information, and page-visit data through analytics.</li>
+    </ul>
+
+    <h2>How we use your information</h2>
+    <ul>
+      <li>To match you with a licensed local septic contractor who can fulfill your request.</li>
+      <li>To follow up on your inquiry and respond to questions.</li>
+      <li>To operate, maintain, and improve this website and our service.</li>
+      <li>To comply with legal obligations, including records related to your consent to be contacted.</li>
+    </ul>
+
+    <h2>How we share your information</h2>
+    <ul>
+      <li>
+        <strong>Licensed contractors.</strong> When you submit a request, your
+        information is shared with one or more licensed local septic contractors
+        who can schedule your free quote. Those contractors handle your
+        information under their own practices.
+      </li>
+      <li>
+        <strong>Service providers.</strong> We use third-party providers to run
+        the site and our service, such as hosting (Cloudflare), form processing
+        (Web3Forms), analytics (Google Analytics), and, in the future, call
+        tracking. They process data on our behalf.
+      </li>
+      <li>
+        <strong>Legal reasons.</strong> We may disclose information if required by
+        law or to protect our rights, users, or the public.
+      </li>
+    </ul>
+    <p>We do not sell your personal information.</p>
+
+    <h2>Data retention</h2>
+    <p>
+      We keep your information for as long as reasonably necessary for the
+      purposes above. Records related to your consent to be contacted are
+      typically retained for at least five years, consistent with federal
+      telephone consumer protection guidance.
+    </p>
+
+    <h2>Your choices and rights</h2>
+    <ul>
+      <li>You may opt out of contact at any time, including by replying STOP to any text message or asking to be removed during any call.</li>
+      <li>You may request access to, correction of, or deletion of your personal information.</li>
+      <li>
+        If you are a California resident, the CCPA and CPRA give you rights to
+        know, delete, correct, and opt out of the sale or sharing of personal
+        information. We do not sell personal information. To exercise any right,
+        contact us using the email below.
+      </li>
+    </ul>
+
+    <h2>Contact</h2>
+    <p>
+      For privacy requests or questions, email
+      <a class="link-inline" href={`mailto:${site.email}`}>{site.email}</a>.
+    </p>
+
+    <p>
+      This policy may be updated from time to time. Material changes will be
+      reflected by the date above.
+    </p>
+  </article>
+</BaseLayout>
