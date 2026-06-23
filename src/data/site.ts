@@ -71,7 +71,14 @@ export const editorial = {
 
 // Build-time keys. Secrets live ONLY in Cloudflare Pages env vars.
 export const keys = {
-  web3forms: import.meta.env.PUBLIC_WEB3FORMS_KEY || '',
+  // Web3Forms access key, provided by the operator for direct use.
+  // Note: a Web3Forms access key is a client-side key that also appears in the
+  // public page HTML by design, so keep it domain-locked to marioncountyseptic.com
+  // in the Web3Forms dashboard. A PUBLIC_WEB3FORMS_KEY env var set in Cloudflare,
+  // if present, overrides this value.
+  web3forms:
+    import.meta.env.PUBLIC_WEB3FORMS_KEY ||
+    'a8a85198-06bb-4fe3-8f3d-40127303a410',
   ga4: import.meta.env.PUBLIC_GA4_ID || '',
   // Optional Google Search Console meta-tag verification token. Leave blank to
   // verify by DNS instead (no code change needed).
