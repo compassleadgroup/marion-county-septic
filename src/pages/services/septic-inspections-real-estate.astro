@@ -1,0 +1,89 @@
+---
+import ServiceLayout from '../../layouts/ServiceLayout.astro';
+import Callout from '../../components/Callout.astro';
+import { getService } from '../../data/services';
+
+const service = getService('septic-inspections-real-estate')!;
+
+const lead =
+  'Buying or selling a home on septic in Marion County? A septic inspection before closing can save a buyer from inheriting a five-figure problem and helps a seller close with confidence. We connect you with a licensed local contractor for a real-estate septic inspection.';
+
+const faqs = [
+  {
+    question: 'How much does a septic inspection cost in Florida?',
+    answer:
+      'A standard pre-sale septic inspection in Florida commonly runs about $250 to $500, with more if a pump-out or dye test is included. It is a small cost relative to the value of the system being checked. A licensed contractor performs the inspection.',
+  },
+  {
+    question: 'What does a septic inspection check?',
+    answer:
+      'An inspection typically covers the tank condition and level, the drainfield, the flow through the system, and whether the system matches its permit, including the number of bedrooms it was sized for. The inspector reports what they find so buyers and sellers can make informed decisions.',
+  },
+  {
+    question: 'Is a septic inspection required when selling a home in Florida?',
+    answer:
+      'There is no statewide mandate for a septic inspection at sale, but most lenders expect one and buyers’ agents strongly recommend it. It is usually well worth doing given the cost of replacing a failed system.',
+  },
+  {
+    question: 'Who pays for the inspection?',
+    answer:
+      'It is negotiable and varies by deal. Often the buyer arranges and pays for it as part of due diligence, but sellers sometimes inspect ahead of listing to avoid surprises. Either way, we can connect you with a licensed contractor.',
+  },
+];
+
+const sources = [
+  { label: 'Septic & Well Pro: Florida septic inspection for home buyers', url: 'https://septicandwell.com/articles/septic-inspection-home-buyers-florida' },
+  { label: 'HomeGuide: septic inspection cost', url: 'https://homeguide.com/costs/septic-tank-inspection-cost' },
+  { label: 'US EPA: How to care for your septic system', url: 'https://www.epa.gov/septic/how-care-your-septic-system' },
+];
+---
+<ServiceLayout service={service} lead={lead} faqs={faqs} sources={sources}>
+  <h2>Why inspect before closing</h2>
+  <p>
+    A septic system can be worth tens of thousands of dollars to replace, and its
+    condition is not visible from a walk-through. A real-estate inspection turns an
+    unknown into a known before money changes hands. For buyers, it prevents
+    inheriting a failing system. For sellers, it removes a common late-stage
+    surprise that can derail a closing.
+  </p>
+
+  <h2>What the inspection covers</h2>
+  <ul>
+    <li>The septic tank condition and liquid level.</li>
+    <li>The drainfield and signs of surfacing or failure.</li>
+    <li>Flow through the system under use.</li>
+    <li>Whether the system matches its permit, including the bedroom count it was sized for.</li>
+  </ul>
+  <Callout variant="info" title="Permit and bedroom mismatches are common">
+    <p>
+      A home that has added bedrooms without upsizing the system is a frequent and
+      costly find. Confirming the permitted size is one of the most valuable parts
+      of an inspection. Our
+      <a class="link-inline" href="/guides/buying-rural-property-septic-marion-county/">guide to buying rural property</a>
+      covers what records to request.
+    </p>
+  </Callout>
+
+  <h2>For agents and sellers</h2>
+  <p>
+    A septic inspection is a natural transaction trigger, and surfacing it early
+    builds trust with clients. Sellers who inspect before listing can address
+    issues on their own timeline rather than under deadline pressure. You are
+    welcome to share this page and our guides with clients.
+  </p>
+
+  <h2>What it costs</h2>
+  <p>
+    A standard Florida pre-sale inspection commonly runs about $250 to $500, more
+    with a pump-out or dye test. See our
+    <a class="link-inline" href="/guides/florida-drainfield-replacement-cost-guide/">cost guide</a>
+    for related ranges. These are figures for context, not a quote.
+  </p>
+
+  <h2>How matching works</h2>
+  <p>
+    Tell us about the property using the form below. We connect you with a licensed
+    local contractor who can perform the inspection and, if work is needed, provide
+    a free, no-obligation quote.
+  </p>
+</ServiceLayout>

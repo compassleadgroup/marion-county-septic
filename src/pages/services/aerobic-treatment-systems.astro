@@ -1,0 +1,94 @@
+---
+import ServiceLayout from '../../layouts/ServiceLayout.astro';
+import Callout from '../../components/Callout.astro';
+import { getService } from '../../data/services';
+
+const service = getService('aerobic-treatment-systems')!;
+
+const lead =
+  'An aerobic treatment unit (ATU) treats wastewater to a higher standard than a conventional septic tank, which makes it a fit for tight lots, poor soils, and situations that call for nitrogen reduction. We connect you with a licensed local contractor for ATU design, installation, and the maintenance Florida requires.';
+
+const faqs = [
+  {
+    question: 'What is an aerobic treatment unit?',
+    answer:
+      'An aerobic treatment unit (ATU) is an advanced onsite system that uses an oxygen-rich biological process to treat wastewater more thoroughly than a conventional septic tank before it reaches the drainfield. ATUs are one type of advanced system used in Florida.',
+  },
+  {
+    question: 'When is an ATU the right choice?',
+    answer:
+      'ATUs suit lots that are too small or wet for a conventional drainfield, sites with poor soils, and cases where nitrogen reduction is required. They are also one of the approaches that can meet the enhanced nutrient-reducing requirement in spring-protection areas.',
+  },
+  {
+    question: 'What maintenance does an aerobic system need?',
+    answer:
+      'Florida requires a maintenance contract with an approved maintenance entity for the life of the system, with service at least twice per year, plus an operating permit. Annual maintenance commonly runs about $200 to $600. The contractor you are matched with can set this up.',
+  },
+  {
+    question: 'How much does an aerobic system cost?',
+    answer:
+      'Florida sources put ATU installation at roughly $10,000 to $20,000, plus the ongoing maintenance contract. The site and system size drive the number. A licensed contractor provides a free quote after evaluating your property.',
+  },
+];
+
+const sources = [
+  { label: 'FDEP Onsite Sewage Program', url: 'https://floridadep.gov/water/onsite-sewage' },
+  { label: 'FDEP: Permitting Enhanced Nutrient-Reducing OSTDS (ENR)', url: 'https://floridadep.gov/water/onsite-sewage/content/permitting-enhanced-nutrient-reducing-onsite-sewage-treatment-and' },
+  { label: 'Angi: cost to install a septic system', url: 'https://www.angi.com/articles/what-does-it-cost-install-septic-system.htm' },
+  { label: 'UF/IFAS: Handbook of Florida Water Regulation (OSTDS, FE614)', url: 'https://edis.ifas.ufl.edu/fe614' },
+];
+---
+<ServiceLayout service={service} lead={lead} faqs={faqs} sources={sources}>
+  <h2>How an aerobic system works</h2>
+  <p>
+    A conventional septic tank treats wastewater anaerobically, without oxygen. An
+    aerobic treatment unit introduces air, which supports bacteria that break down
+    waste more completely. The result is higher-quality effluent, which is why
+    ATUs can work on sites where a conventional drainfield alone would not, and why
+    they are one of the tools used to reduce nitrogen near the springs.
+  </p>
+
+  <h2>When an ATU makes sense</h2>
+  <ul>
+    <li>The lot is too small or too wet for a conventional drainfield.</li>
+    <li>The soils are poor or restrictive.</li>
+    <li>Nitrogen reduction is required, such as in a springs
+      <a class="link-inline" href="/services/advanced-treatment-springs/">Priority Focus Area</a>.</li>
+    <li>A reduced drainfield footprint is needed to fit the site.</li>
+  </ul>
+
+  <h2>Maintenance is required, not optional</h2>
+  <Callout variant="info" title="Plan for ongoing service">
+    <p>
+      Florida requires a maintenance contract with an approved maintenance entity
+      for the life of an ATU, with service at least twice per year, plus an
+      operating permit. This is a real, recurring obligation, so factor it into
+      your decision. The contractor you are matched with can arrange it.
+    </p>
+  </Callout>
+
+  <h2>Marion County considerations</h2>
+  <p>
+    In a county where the seasonal high water table and springs rules complicate
+    many sites, ATUs are a common answer. If your parcel is inside a Silver
+    Springs or Rainbow Springs Priority Focus Area, an aerobic or other advanced
+    system that meets the nitrogen standard may be required. Our
+    <a class="link-inline" href="/guides/springs-bmap-advanced-treatment-guide/">springs and BMAP guide</a>
+    explains where.
+  </p>
+
+  <h2>What it costs</h2>
+  <p>
+    Florida sources put ATU installation at roughly $10,000 to $20,000, plus
+    maintenance commonly around $200 to $600 per year. See our
+    <a class="link-inline" href="/guides/florida-drainfield-replacement-cost-guide/">cost guide</a>
+    for context. These are ranges, not a quote.
+  </p>
+
+  <h2>How matching works</h2>
+  <p>
+    Tell us about your property using the form below. We connect you with a
+    licensed local contractor who can design, install, and maintain an aerobic
+    system, and who provides a free, no-obligation quote.
+  </p>
+</ServiceLayout>

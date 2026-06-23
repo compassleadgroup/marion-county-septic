@@ -1,0 +1,96 @@
+---
+import ServiceLayout from '../../layouts/ServiceLayout.astro';
+import Callout from '../../components/Callout.astro';
+import { getService } from '../../data/services';
+
+const service = getService('septic-for-new-construction')!;
+
+const lead =
+  'Building on a vacant lot in Marion County usually means installing a septic system, and the soil decides what is possible before the house is even designed. We connect you with a licensed local contractor who handles the site evaluation, the OSTDS permit, and a system sized for your new home.';
+
+const faqs = [
+  {
+    question: 'When in the building process should I deal with septic?',
+    answer:
+      'Early. A site evaluation reads the soil and the seasonal high water table, which determine what system the lot can support and where it can go. That information affects the home placement and the budget, so it is best handled before the build is finalized.',
+  },
+  {
+    question: 'How is a new-construction system sized?',
+    answer:
+      'Florida sizes systems primarily by the number of bedrooms, which sets the estimated sewage flow, combined with the soil loading rate from the site evaluation. More bedrooms mean a larger tank and drainfield. A licensed contractor designs the system to match the home and the soil.',
+  },
+  {
+    question: 'Could springs rules affect my new build?',
+    answer:
+      'Yes. If the lot is inside a Silver Springs or Rainbow Springs Priority Focus Area, a new system on a lot of one acre or less must be an enhanced nutrient-reducing (ENR) system when sewer is not available. Check this early, because it changes the design and the budget.',
+  },
+  {
+    question: 'Do you build the system?',
+    answer:
+      'No. Marion County Septic is a free matching service. We connect you with a licensed local contractor who handles the permit, the site evaluation, and the installation, and who provides a free, no-obligation quote.',
+  },
+];
+
+const sources = [
+  { label: 'FDEP OSTDS permitting FAQ', url: 'https://floridadep.gov/water/onsite-sewage/content/onsite-sewage-faq-permitting' },
+  { label: 'FDEP: Springs Protection and BMAPs (OSTDS)', url: 'https://floridadep.gov/water/onsite-sewage/content/springs-protection-and-basin-management-action-plans-bmaps' },
+  { label: 'Septic & Well Pro: Florida septic installation cost', url: 'https://septicandwell.com/articles/septic-installation-cost-florida' },
+  { label: 'UF/IFAS: Handbook of Florida Water Regulation (OSTDS, FE614)', url: 'https://edis.ifas.ufl.edu/fe614' },
+];
+---
+<ServiceLayout service={service} lead={lead} faqs={faqs} sources={sources}>
+  <h2>Soil comes first</h2>
+  <p>
+    On raw land, the most important early question is not the house, it is the
+    soil. A site evaluation reads the soil profile and the estimated seasonal high
+    water table, and the answer determines whether a conventional system works or
+    whether the lot needs an engineered, mound, or advanced system. That can move
+    the budget by thousands, so it is worth knowing before plans are final.
+  </p>
+  <Callout variant="info" title="Make septic part of your due diligence">
+    <p>
+      If you are still buying the lot, our
+      <a class="link-inline" href="/guides/buying-rural-property-septic-marion-county/">guide to buying rural property with septic</a>
+      explains how to make an offer contingent on a passing site evaluation, so a
+      surprise does not land after closing.
+    </p>
+  </Callout>
+
+  <h2>Sizing the system to the home</h2>
+  <p>
+    Florida sizes onsite systems primarily by bedroom count, which sets the
+    estimated sewage flow, then applies the soil loading rate from the site
+    evaluation to size the drainfield. A larger home needs a larger tank and a
+    larger field. The
+    <a class="link-inline" href="/guides/marion-county-septic-permit-guide/">permit guide</a>
+    covers the sizing rules and the permit steps.
+  </p>
+
+  <h2>Marion County considerations</h2>
+  <p>
+    New construction is concentrated where the county is growing fastest, often on
+    former farmland and acreage in and around
+    <a class="link-inline" href="/ocala/">Ocala</a>,
+    <a class="link-inline" href="/summerfield/">Summerfield</a>, and the
+    surrounding communities. Two local factors shape the system: the seasonal high
+    water table, which can require an elevated or engineered field, and the springs
+    Priority Focus Areas, which can require an
+    <a class="link-inline" href="/services/advanced-treatment-springs/">advanced nutrient-reducing system</a>.
+  </p>
+
+  <h2>What it costs</h2>
+  <p>
+    A new conventional system in Florida runs roughly $5,000 to $20,000, with
+    advanced and engineered systems higher. Our
+    <a class="link-inline" href="/guides/florida-drainfield-replacement-cost-guide/">cost guide</a>
+    breaks down the ranges and the add-ons. These are figures for context, not a
+    quote.
+  </p>
+
+  <h2>How matching works</h2>
+  <p>
+    Tell us about the lot and the home you are planning using the form below. We
+    connect you with a licensed local contractor who can evaluate the site, handle
+    the permit, and provide a free, no-obligation quote.
+  </p>
+</ServiceLayout>

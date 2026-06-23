@@ -1,0 +1,101 @@
+---
+import ServiceLayout from '../../layouts/ServiceLayout.astro';
+import Callout from '../../components/Callout.astro';
+import { getService } from '../../data/services';
+
+const service = getService('septic-system-installation')!;
+
+const lead =
+  'Installing a new septic system in Marion County is a permitted, engineered project, not an off-the-shelf purchase. Whether you are building on raw land or replacing a whole system that has reached the end of its life, we connect you with a licensed local contractor who handles the site evaluation, the FDEP permit, and the installation.';
+
+const faqs = [
+  {
+    question: 'What does a new septic system installation include?',
+    answer:
+      'Typically a septic tank, a drainfield sized for your soil and home, the connecting plumbing, and, where required, advanced treatment. It also includes the site evaluation and the FDEP construction permit. The licensed contractor you are matched with manages all of it.',
+  },
+  {
+    question: 'How much does a new septic system cost in Marion County?',
+    answer:
+      'Florida industry sources put a new conventional system in the range of about $5,000 to $20,000, with advanced and engineered systems higher. Soil, bedrooms, lot access, and springs rules drive the number. See our Florida cost guide, and get a free quote from a licensed contractor for your actual price.',
+  },
+  {
+    question: 'Do I need a permit to install a septic system?',
+    answer:
+      'Yes. In Florida, a new OSTDS requires a construction permit, which in Marion County is administered by FDEP as of July 1, 2025, along with a site evaluation. Your contractor handles the permit and the inspections.',
+  },
+  {
+    question: 'Can you install my system?',
+    answer:
+      'No. Marion County Septic is a free matching service, not a contractor. We connect you with a licensed local septic contractor who performs the installation and provides your free, no-obligation quote.',
+  },
+];
+
+const sources = [
+  { label: 'FDEP Onsite Sewage Program', url: 'https://floridadep.gov/water/onsite-sewage' },
+  { label: 'FDEP OSTDS permitting FAQ', url: 'https://floridadep.gov/water/onsite-sewage/content/onsite-sewage-faq-permitting' },
+  { label: 'Septic & Well Pro: Florida septic installation cost', url: 'https://septicandwell.com/articles/septic-installation-cost-florida' },
+  { label: 'UF/IFAS: Handbook of Florida Water Regulation (OSTDS, FE614)', url: 'https://edis.ifas.ufl.edu/fe614' },
+];
+---
+<ServiceLayout service={service} lead={lead} faqs={faqs} sources={sources}>
+  <h2>Who needs a new septic system</h2>
+  <p>
+    New installation work in Marion County tends to fall into a few patterns:
+    a home going up on raw acreage with no existing system, a property where the
+    old system has failed beyond repair and the whole thing is being replaced, or
+    a parcel where a change in use or an addition has outgrown the current system.
+    All of them start the same way, with soil.
+  </p>
+
+  <h2>What an installation involves</h2>
+  <p>
+    A conventional system is a septic tank that separates solids and a drainfield
+    that returns treated effluent to the soil. Around that baseline, the design
+    can change a lot depending on the site:
+  </p>
+  <ul>
+    <li><strong>Conventional systems</strong> work where soils are suitable and the water table is low enough.</li>
+    <li><strong>Aerobic treatment units</strong> suit tight or difficult lots. See our <a class="link-inline" href="/services/aerobic-treatment-systems/">aerobic systems</a> page.</li>
+    <li><strong>Advanced nutrient-reducing (ENR) systems</strong> are required in many spring-protection areas. See <a class="link-inline" href="/services/advanced-treatment-springs/">advanced treatment</a>.</li>
+    <li><strong>Mound or engineered systems</strong> handle a high seasonal water table.</li>
+  </ul>
+
+  <h2>Marion County considerations</h2>
+  <p>
+    Three local realities shape almost every new system here. First, the soils:
+    much of the county sits on sandy karst uplands that drain well, but pockets of
+    restrictive soil and a seasonal high water table can require an engineered
+    design. Second, the springs: parcels inside a Silver Springs or Rainbow
+    Springs Priority Focus Area may be required to install an ENR system. Third,
+    the permit: the OSTDS construction permit and site evaluation are mandatory
+    first steps.
+  </p>
+  <Callout variant="springs" title="Check your springs status early">
+    <p>
+      If your parcel is inside a Priority Focus Area, advanced treatment can add
+      five figures to the project, so find out before you budget. Our
+      <a class="link-inline" href="/guides/springs-bmap-advanced-treatment-guide/">springs and BMAP guide</a>
+      shows where the rules apply.
+    </p>
+  </Callout>
+
+  <h2>What it costs</h2>
+  <p>
+    Florida sources put a new conventional system at roughly $5,000 to $20,000,
+    with aerobic, ENR, and mound systems higher. The honest answer is that the
+    soil and the rules for your specific lot decide it, which is why a real number
+    comes from a site evaluation. For ranges and the factors behind them, see our
+    <a class="link-inline" href="/guides/florida-drainfield-replacement-cost-guide/">Florida cost guide</a>,
+    and for the process, our
+    <a class="link-inline" href="/guides/marion-county-septic-permit-guide/">permit guide</a>.
+  </p>
+
+  <h2>How matching works</h2>
+  <p>
+    Tell us about your property and project using the form below. We forward it to
+    a licensed local septic contractor who can handle the permit, the site
+    evaluation, and the installation, and who contacts you for a free,
+    no-obligation quote.
+  </p>
+</ServiceLayout>

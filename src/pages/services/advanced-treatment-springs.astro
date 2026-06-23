@@ -1,0 +1,102 @@
+---
+import ServiceLayout from '../../layouts/ServiceLayout.astro';
+import Callout from '../../components/Callout.astro';
+import { getService } from '../../data/services';
+
+const service = getService('advanced-treatment-springs')!;
+
+const lead =
+  'In Marion County’s spring-protection zones, a new or replacement septic system may be required by state law to be an enhanced nutrient-reducing (ENR) system. We connect you with a licensed local contractor who installs and maintains advanced treatment systems and knows the Silver Springs and Rainbow Springs rules.';
+
+const faqs = [
+  {
+    question: 'What is an ENR advanced treatment system?',
+    answer:
+      'An enhanced nutrient-reducing (ENR) system is an advanced onsite system that cuts total nitrogen by at least 65 percent compared with a conventional septic system. Florida recognizes several approaches, including in-ground nitrogen-reducing biofilters, certain aerobic treatment units, and engineer-designed performance-based treatment systems.',
+  },
+  {
+    question: 'Why would I be required to install one?',
+    answer:
+      'Under HB 1379 (2023), within a Basin Management Action Plan for an Outstanding Florida Spring, when sewer is not available, a new system on a lot of one acre or less must be an ENR system. Springs remediation plans also reach existing systems inside Priority Focus Areas when they are replaced. Both Silver Springs and Rainbow Springs are covered.',
+  },
+  {
+    question: 'How much do advanced treatment systems cost?',
+    answer:
+      'Florida sources put the ENR premium at roughly $8,000 to $20,000 above a conventional system, with total installed cost commonly around $15,000 to $35,000 and annual maintenance often $800 to $1,500. Some Florida counties offer upgrade grants. These are typical ranges, not a quote.',
+  },
+  {
+    question: 'How do I find out if my parcel is affected?',
+    answer:
+      'Check the FDEP Priority Focus Area map, then confirm with the licensed contractor during the site evaluation. East of Interstate 75 is generally the Silver Springs BMAP; west of I-75 is generally the Rainbow Springs BMAP.',
+  },
+];
+
+const sources = [
+  { label: 'FDEP: Permitting Enhanced Nutrient-Reducing OSTDS (ENR)', url: 'https://floridadep.gov/water/onsite-sewage/content/permitting-enhanced-nutrient-reducing-onsite-sewage-treatment-and' },
+  { label: 'FDEP: Springs Protection and BMAPs (OSTDS)', url: 'https://floridadep.gov/water/onsite-sewage/content/springs-protection-and-basin-management-action-plans-bmaps' },
+  { label: 'FDEP: Springs Priority Focus Areas interactive map', url: 'https://www.arcgis.com/apps/View/index.html?appid=1afdd97c67584c06840019241becde74' },
+  { label: 'HB 1379 (2023), Florida Legislature', url: 'https://www.flsenate.gov/Session/Bill/2023/1379' },
+];
+---
+<ServiceLayout service={service} lead={lead} faqs={faqs} sources={sources}>
+  <Callout variant="springs" title="The short version">
+    <p>
+      If your parcel is inside a Silver Springs or Rainbow Springs Priority Focus
+      Area, expect advanced treatment to be required for a new system, and for
+      many replacements. This is the single biggest factor that changes the cost
+      and design of a system in spring country.
+    </p>
+  </Callout>
+
+  <h2>What advanced treatment is</h2>
+  <p>
+    Conventional septic systems remove solids and disperse effluent, but they are
+    not designed to remove much nitrogen. Advanced, or enhanced nutrient-reducing,
+    systems add a treatment step that cuts nitrogen by at least 65 percent before
+    the effluent reaches the soil. Florida recognizes several approaches:
+  </p>
+  <ul>
+    <li><strong>In-ground nitrogen-reducing biofilters</strong> that treat effluent as it passes through engineered media.</li>
+    <li><strong>Aerobic treatment units</strong> that meet the relevant certification. See our <a class="link-inline" href="/services/aerobic-treatment-systems/">aerobic systems</a> page.</li>
+    <li><strong>Performance-based treatment systems</strong> designed by a licensed engineer for the specific site.</li>
+  </ul>
+
+  <h2>Where these rules apply in Marion County</h2>
+  <p>
+    Marion County is split between two springsheds along Interstate 75. East of
+    I-75 is the Silver Springs BMAP; west of I-75 is the Rainbow Springs BMAP.
+    Within the Priority Focus Areas of either plan, advanced treatment can be
+    required. Our
+    <a class="link-inline" href="/guides/springs-bmap-advanced-treatment-guide/">springs and BMAP guide</a>
+    explains the geography and the law in detail, and town pages such as
+    <a class="link-inline" href="/dunnellon/">Dunnellon</a> and
+    <a class="link-inline" href="/silver-springs/">Silver Springs</a> cover local
+    specifics.
+  </p>
+
+  <h2>Maintenance is part of the deal</h2>
+  <p>
+    Advanced systems have a treatment process to keep running, so Florida requires
+    an ongoing maintenance contract and, for performance-based systems, an
+    operating permit. Budget for regular service, not just the installation. The
+    contractor you are matched with can explain the maintenance obligations for
+    the system your site needs.
+  </p>
+
+  <h2>What it costs</h2>
+  <p>
+    Florida sources put the ENR premium at roughly $8,000 to $20,000 above a
+    conventional system, with total installed cost commonly around $15,000 to
+    $35,000 and annual maintenance often $800 to $1,500. Some Florida counties
+    offer grants that offset part of an upgrade. See our
+    <a class="link-inline" href="/guides/florida-drainfield-replacement-cost-guide/">cost guide</a>
+    for the full picture. These are ranges for context, not a quote.
+  </p>
+
+  <h2>How matching works</h2>
+  <p>
+    Tell us about your property using the form below. We connect you with a
+    licensed local contractor experienced with advanced treatment systems and the
+    springs rules, who provides a free, no-obligation quote.
+  </p>
+</ServiceLayout>

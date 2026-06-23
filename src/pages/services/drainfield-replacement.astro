@@ -1,0 +1,104 @@
+---
+import ServiceLayout from '../../layouts/ServiceLayout.astro';
+import Callout from '../../components/Callout.astro';
+import { getService } from '../../data/services';
+
+const service = getService('drainfield-replacement')!;
+
+const lead =
+  'The drainfield is the part of a septic system that usually fails first, and a failed drainfield is the most common reason for major septic work in Marion County. We connect you with a licensed local contractor who diagnoses the problem, handles the permit, and installs a new drainfield sized for your soil.';
+
+const faqs = [
+  {
+    question: 'How do I know if my drainfield needs replacing?',
+    answer:
+      'Warning signs include slow drains, sewage odors, soggy or unusually green grass over the drainfield, gurgling, and backups. A licensed contractor inspects the system to determine whether a repair will hold or a full replacement is needed. See our drainfield failure and lifespan guide.',
+  },
+  {
+    question: 'How much does drainfield replacement cost in Florida?',
+    answer:
+      'Florida sources commonly cite roughly $5,000 to $15,000 or more for a conventional replacement, higher if the site requires an engineered or advanced nutrient-reducing system. The size of the field, the soil, and access drive the price. A licensed contractor provides a free quote after evaluating the site.',
+  },
+  {
+    question: 'Could a replacement trigger an advanced treatment requirement?',
+    answer:
+      'Possibly. If your parcel is inside a Silver Springs or Rainbow Springs Priority Focus Area, a replacement system may be required to be an enhanced nutrient-reducing (ENR) system. The contractor confirms your parcel status during the evaluation.',
+  },
+  {
+    question: 'Can I just repair the drainfield instead of replacing it?',
+    answer:
+      'Sometimes. A clogged line or a failed distribution box can be repaired, but a drainfield that has reached the end of its life usually needs replacement. The right answer depends on the diagnosis, which a licensed contractor provides.',
+  },
+];
+
+const sources = [
+  { label: 'HomeGuide: drain field replacement cost', url: 'https://homeguide.com/costs/drain-leach-field-replacement-cost' },
+  { label: 'US EPA: How to care for your septic system', url: 'https://www.epa.gov/septic/how-care-your-septic-system' },
+  { label: 'FDEP OSTDS permitting FAQ', url: 'https://floridadep.gov/water/onsite-sewage/content/onsite-sewage-faq-permitting' },
+  { label: 'UF/IFAS: Handbook of Florida Water Regulation (OSTDS, FE614)', url: 'https://edis.ifas.ufl.edu/fe614' },
+];
+---
+<ServiceLayout service={service} lead={lead} faqs={faqs} sources={sources}>
+  <h2>Why drainfields fail</h2>
+  <p>
+    A drainfield returns treated effluent from the septic tank to the soil. Over
+    time it can stop absorbing properly, usually because solids carried over from
+    an un-pumped tank have clogged it, because it has been overloaded with water,
+    or simply because it has reached the end of its service life. In Marion
+    County, the wet-season high water table adds stress, since a saturated field
+    cannot absorb effluent the way a dry one can.
+  </p>
+  <Callout variant="info" title="Know the warning signs">
+    <p>
+      Slow drains, odors, soggy ground, lush grass over the field, gurgling, and
+      backups all point to a struggling drainfield. Our
+      <a class="link-inline" href="/guides/drainfield-failure-signs-and-lifespan/">drainfield failure and lifespan guide</a>
+      explains what to watch for and what shortens a field's life.
+    </p>
+  </Callout>
+
+  <h2>Repair or replace</h2>
+  <p>
+    Not every problem means a full replacement. A clogged distribution box or a
+    single failed line can sometimes be repaired. But when the field itself is
+    spent, a replacement is the durable fix. The only way to know is a diagnosis
+    by a licensed contractor, who inspects the system and recommends the right
+    path.
+  </p>
+
+  <h2>What a replacement involves</h2>
+  <p>
+    A drainfield replacement is a permitted project. It generally includes a site
+    evaluation to confirm the soil and water table, the FDEP permit, removal of
+    the failed field, and installation of a new field sized to your soil and home.
+    If the tank is also failing, it may be replaced at the same time. The
+    <a class="link-inline" href="/guides/marion-county-septic-permit-guide/">permit guide</a>
+    walks through the steps.
+  </p>
+
+  <h2>Marion County considerations</h2>
+  <p>
+    Two local factors matter most. The seasonal high water table can require an
+    elevated or engineered field on some lots. And if your parcel is inside a
+    springs Priority Focus Area, the replacement may need to be an
+    <a class="link-inline" href="/services/advanced-treatment-springs/">advanced nutrient-reducing system</a>,
+    which changes the design and the cost.
+  </p>
+
+  <h2>What it costs</h2>
+  <p>
+    Florida sources commonly cite roughly $5,000 to $15,000 or more for a
+    conventional drainfield replacement, with engineered and ENR systems higher.
+    For the full picture, including the add-ons people forget, see our
+    <a class="link-inline" href="/guides/florida-drainfield-replacement-cost-guide/">Florida cost guide</a>.
+    These are ranges for context, not a quote. A licensed contractor provides your
+    actual price.
+  </p>
+
+  <h2>How matching works</h2>
+  <p>
+    Tell us what your system is doing using the form below. We connect you with a
+    licensed local contractor who diagnoses the issue, handles the permit, and
+    provides a free, no-obligation quote.
+  </p>
+</ServiceLayout>

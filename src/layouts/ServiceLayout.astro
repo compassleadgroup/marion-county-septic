@@ -1,0 +1,112 @@
+---
+/*
+  Shared layout for the six service (money) pages. Provides Service JSON-LD
+  (honest "connecting owners with licensed contractors" description),
+  breadcrumbs, the hero, the required internal links to all 8 town pages and the
+  backbone guides, an embedded quote form, and an FAQ block with FAQPage schema.
+  The unique selling content for each service is passed via the default slot.
+*/
+import BaseLayout from './BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import QuoteForm from '../components/QuoteForm.astro';
+import FaqBlock from '../components/FaqBlock.astro';
+import SourcesList from '../components/SourcesList.astro';
+import { phone } from '../data/site';
+import { towns } from '../data/towns';
+import { guides } from '../data/guides';
+import { buildService } from '../lib/schema';
+import type { Service } from '../data/services';
+import type { FaqItem } from '../lib/schema';
+
+interface Source { label: string; url: string; }
+interface Props {
+  service: Service;
+  lead: string;
+  faqs?: FaqItem[];
+  sources?: Source[];
+}
+const { service, lead, faqs = [], sources = [] } = Astro.props;
+
+const url = `/services/${service.slug}/`;
+const schema = buildService({
+  name: service.name,
+  url: new URL(url, Astro.site).href,
+  description: `Connecting Marion County, Florida property owners with licensed local septic contractors for ${service.name.toLowerCase()}.`,
+});
+
+// Backbone + cost guides for the helpful-guides block.
+const linkGuides = guides.filter((g) =>
+  ['marion-county-septic-permit-guide', 'springs-bmap-advanced-treatment-guide', 'florida-drainfield-replacement-cost-guide'].includes(g.slug)
+);
+---
+<BaseLayout title={service.title} description={service.description} schemas={[schema]}>
+  <Breadcrumbs
+    items={[
+      { name: 'Home', path: '/' },
+      { name: service.name, path: url },
+    ]}
+  />
+
+  <!-- Hero -->
+  <section class="container-x pb-2 pt-6">
+    <div class="max-w-3xl">
+      <h1 class="font-heading text-3xl font-extrabold leading-tight text-spring-dark sm:text-4xl">
+        {service.h1}
+      </h1>
+      <p class="mt-5 text-lg leading-relaxed text-ink/85">{lead}</p>
+      <div class="mt-6 flex flex-wrap items-center gap-4">
+        <a class="btn-primary" href="#quote">Get a free quote</a>
+        <a class="btn-secondary" href={`tel:${phone.tel}`}>Call {phone.display}</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Unique body -->
+  <article class="container-narrow rich py-8">
+    <slot />
+    <SourcesList sources={sources} />
+  </article>
+
+  <!-- Internal links: all 8 town pages (required) -->
+  <section class="bg-mist/60">
+    <div class="container-x py-12">
+      <h2 class="font-heading text-2xl font-bold text-spring-dark">
+        {service.name} across Marion County
+      </h2>
+      <p class="mt-2 text-ink/80">
+        We match property owners with licensed local contractors in these areas:
+      </p>
+      <ul class="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-4">
+        {towns.map((t) => (
+          <li>
+            <a class="block rounded-lg border border-sage bg-white px-4 py-3 font-heading font-semibold text-spring-dark hover:border-spring hover:text-spring" href={`/${t.slug}/`}>
+              {t.name}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <!-- Helpful guides (permit + springs + cost) -->
+  <section class="container-x py-12">
+    <h2 class="font-heading text-2xl font-bold text-spring-dark">Before you start, read these</h2>
+    <div class="mt-6 grid gap-5 md:grid-cols-3">
+      {linkGuides.map((g) => (
+        <a class="group rounded-xl border border-sage bg-white p-5 hover:border-spring" href={`/guides/${g.slug}/`}>
+          <p class="font-heading font-bold text-spring-dark group-hover:text-spring">{g.title}</p>
+          <p class="mt-1 text-sm text-ink/80">{g.cardSummary}</p>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <!-- Embedded quote form -->
+  <section class="container-x pb-4">
+    <div class="mx-auto max-w-3xl">
+      <QuoteForm heading={`Get a free quote for ${service.name.toLowerCase()}`} />
+    </div>
+  </section>
+
+  {faqs.length > 0 && <FaqBlock faqs={faqs} />}
+</BaseLayout>
