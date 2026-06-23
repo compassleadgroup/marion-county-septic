@@ -73,6 +73,9 @@ export const editorial = {
 export const keys = {
   web3forms: import.meta.env.PUBLIC_WEB3FORMS_KEY || '',
   ga4: import.meta.env.PUBLIC_GA4_ID || '',
+  // Optional Google Search Console meta-tag verification token. Leave blank to
+  // verify by DNS instead (no code change needed).
+  gscVerification: import.meta.env.PUBLIC_GSC_VERIFICATION || '',
 } as const;
 
 /*

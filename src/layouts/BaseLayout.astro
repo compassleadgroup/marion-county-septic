@@ -49,6 +49,9 @@ const org = buildOrganization();
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
+    {keys.gscVerification && (
+      <meta name="google-site-verification" content={keys.gscVerification} />
+    )}
     {noindex && <meta name="robots" content="noindex, nofollow" />}
 
     <!-- Open Graph / social -->
