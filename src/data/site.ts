@@ -40,6 +40,18 @@ export const phone = {
   tel: import.meta.env.PUBLIC_PHONE_TEL || '+13525550100',
 } as const;
 
+/*
+  Editorial byline. COMPLIANCE_STANDARDS.md forbids inventing named individuals
+  with fabricated bios, so the author is the brand's editorial team (honest, no
+  fake person, no stock-photo headshot). The Build Spec's "named brand author"
+  is satisfied by the brand itself. Update reviewedLabel when guides are revised.
+*/
+export const editorial = {
+  author: 'Marion County Septic Editorial Team',
+  reviewedLabel: 'June 2026',
+  note: 'Written and maintained by the Marion County Septic editorial team and compiled from cited public sources. Marion County Septic is operated by Compass Camper LLC and is an information resource and contractor-matching service, not a septic contractor.',
+} as const;
+
 // Build-time keys. Secrets live ONLY in Cloudflare Pages env vars.
 export const keys = {
   web3forms: import.meta.env.PUBLIC_WEB3FORMS_KEY || '',

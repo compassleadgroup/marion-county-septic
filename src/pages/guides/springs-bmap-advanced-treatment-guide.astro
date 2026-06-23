@@ -1,0 +1,161 @@
+---
+import GuideLayout from '../../layouts/GuideLayout.astro';
+import Callout from '../../components/Callout.astro';
+import { getGuide } from '../../data/guides';
+
+const guide = getGuide('springs-bmap-advanced-treatment-guide')!;
+
+const lead =
+  'Much of Marion County drains to Silver Springs or Rainbow Springs, two of Florida’s Outstanding Florida Springs. To protect them, state law can require new and replacement septic systems in certain areas to be enhanced nutrient-reducing (ENR) systems. This guide explains the BMAPs, the Priority Focus Areas that trigger the requirement, what an ENR system is, and what it means for your project.';
+
+const sources = [
+  { label: 'FDEP: Springs Protection and BMAPs (OSTDS)', url: 'https://floridadep.gov/water/onsite-sewage/content/springs-protection-and-basin-management-action-plans-bmaps' },
+  { label: 'FDEP: Permitting Enhanced Nutrient-Reducing OSTDS (ENR-OSTDS)', url: 'https://floridadep.gov/water/onsite-sewage/content/permitting-enhanced-nutrient-reducing-onsite-sewage-treatment-and' },
+  { label: 'FDEP: Silver Springs and Upper Silver River BMAP', url: 'https://floridadep.gov/dear/water-quality-restoration/documents/silver-springs-silver-springs-group-and-upper-silver-river' },
+  { label: 'FDEP: Rainbow Springs BMAP', url: 'https://floridadep.gov/dear/water-quality-restoration/documents/rainbow-springs-basin-management-action-plan-bmap' },
+  { label: 'FDEP: Springs Priority Focus Areas interactive map', url: 'https://www.arcgis.com/apps/View/index.html?appid=1afdd97c67584c06840019241becde74' },
+  { label: 'HB 1379 (2023), Florida Legislature', url: 'https://www.flsenate.gov/Session/Bill/2023/1379' },
+  { label: 'St. Johns River Water Management District: Silver Springs', url: 'https://www.sjrwmd.com/minimumflowsandlevels/silver-springs/' },
+  { label: 'Southwest Florida Water Management District: Rainbow River', url: 'https://www.swfwmd.state.fl.us/watersheds/springscoast/rainbow-river' },
+  { label: 'UF/IFAS: Handbook of Florida Water Regulation (OSTDS, FE614)', url: 'https://edis.ifas.ufl.edu/fe614' },
+];
+
+const faqs = [
+  {
+    question: 'What is a BMAP?',
+    answer:
+      'A Basin Management Action Plan (BMAP) is a state plan to restore water quality in an impaired water body, such as a spring. When septic systems contribute a significant share of the nutrient load, the BMAP includes an onsite sewage remediation plan. Marion County is covered by the Silver Springs BMAP and the Rainbow Springs BMAP, both administered by FDEP.',
+  },
+  {
+    question: 'How do I know if my property needs an ENR system?',
+    answer:
+      'It depends on whether your parcel is inside a Priority Focus Area of a springs BMAP. The clearest way to check is the FDEP Priority Focus Area map, and the licensed contractor you are matched with confirms it during the site evaluation. East of Interstate 75 is generally the Silver Springs BMAP; west of I-75 is generally the Rainbow Springs BMAP.',
+  },
+  {
+    question: 'What is an ENR system and how is it different from a regular septic system?',
+    answer:
+      'An enhanced nutrient-reducing (ENR) system is an advanced onsite system designed to cut total nitrogen by at least 65 percent compared with a conventional septic system. Approved approaches include in-ground nitrogen-reducing biofilters, certain aerobic treatment units, and engineer-designed performance-based treatment systems. ENR systems require ongoing maintenance under a contract.',
+  },
+  {
+    question: 'How much more does an ENR system cost?',
+    answer:
+      'Florida cost sources generally put the ENR premium at roughly $8,000 to $20,000 above a conventional system, with total installed costs commonly in the range of about $15,000 to $35,000, plus higher annual maintenance, often around $800 to $1,500 per year. These are typical ranges from industry sources, not a quote. Some Florida counties offer upgrade grants.',
+  },
+  {
+    question: 'Which Marion County areas are affected?',
+    answer:
+      'Both springsheds cover large parts of the county. East of I-75, areas around Silver Springs, Belleview, Summerfield, and Ocklawaha fall in the Silver Springs BMAP. West of I-75, Dunnellon and the Rainbow Springs area fall in the Rainbow Springs BMAP. Whether a specific parcel is inside a Priority Focus Area must be confirmed against the FDEP map.',
+  },
+];
+---
+<GuideLayout guide={guide} lead={lead} sources={sources} faqs={faqs}>
+  <h2>Why springs protection drives septic rules here</h2>
+  <p>
+    Silver Springs and Rainbow Springs are first-magnitude springs fed by the
+    Floridan Aquifer. In a karst landscape like Marion County, where porous
+    limestone sits at or near the surface, nutrients applied at the land surface
+    can move into the aquifer that feeds the springs. Nitrogen from septic
+    systems is part of that load, which is why the state created spring-protection
+    plans that reach onto private property.
+  </p>
+  <p>
+    Under the Florida Springs and Aquifer Protection Act, when septic systems
+    contribute more than a set share of the nutrient load to an Outstanding
+    Florida Spring, the state must adopt a Basin Management Action Plan (BMAP)
+    that includes an onsite sewage remediation plan. Both Silver Springs and
+    Rainbow Springs meet that threshold.
+  </p>
+
+  <h2>The two BMAPs, divided by Interstate 75</h2>
+  <p>
+    Marion County is split between two springsheds, and the practical dividing
+    line is Interstate 75:
+  </p>
+  <ul>
+    <li>
+      <strong>East of I-75: the Silver Springs BMAP.</strong> Administered with
+      the St. Johns River Water Management District, it covers central and
+      eastern Marion County, including
+      <a class="link-inline" href="/silver-springs/">Silver Springs</a>,
+      <a class="link-inline" href="/belleview/">Belleview</a>,
+      <a class="link-inline" href="/ocklawaha/">Ocklawaha</a>, and
+      <a class="link-inline" href="/summerfield/">Summerfield</a>.
+    </li>
+    <li>
+      <strong>West of I-75: the Rainbow Springs BMAP.</strong> Administered with
+      the Southwest Florida Water Management District, it covers western Marion
+      County, including <a class="link-inline" href="/dunnellon/">Dunnellon</a>
+      and the Rainbow Springs area.
+    </li>
+  </ul>
+  <p>
+    <a class="link-inline" href="/ocala/">Ocala</a> itself straddles the line:
+    I-75 runs through the city, so different parts of Ocala fall under different
+    plans. That is why parcel-level confirmation matters.
+  </p>
+
+  <h2>Priority Focus Areas: what actually triggers the requirement</h2>
+  <p>
+    Being inside a BMAP springshed is not the same as being inside a Priority
+    Focus Area (PFA). A PFA is the part of the basin where the aquifer is most
+    vulnerable and most directly connected to the spring, modeled using an
+    estimated travel time for groundwater to reach the spring. The PFA is what
+    triggers the enhanced-treatment requirements for onsite systems.
+  </p>
+  <Callout variant="springs" title="The 65 percent nitrogen rule">
+    <p>
+      Under HB 1379 (2023), within a BMAP for an Outstanding Florida Spring, when
+      central sewer is not available, a new septic system on a lot of one acre or
+      less must be an enhanced nutrient-reducing (ENR) system that reduces total
+      nitrogen by at least 65 percent. Springs BMAP remediation plans also reach
+      existing systems inside Priority Focus Areas when they are replaced or
+      repaired. Confirm how the rule applies to your parcel with FDEP.
+    </p>
+  </Callout>
+
+  <h2>What an ENR system is</h2>
+  <p>
+    An enhanced nutrient-reducing system treats wastewater to a higher standard
+    than a conventional septic tank and drainfield, specifically to remove
+    nitrogen. Florida recognizes several approaches, including in-ground
+    nitrogen-reducing biofilters, aerobic treatment units that meet the relevant
+    certification, and engineer-designed
+    <a class="link-inline" href="/services/advanced-treatment-springs/">performance-based treatment systems</a>.
+    Because these systems have moving parts and a treatment process to maintain,
+    Florida requires an ongoing maintenance contract and, for performance-based
+    systems, an operating permit. Our
+    <a class="link-inline" href="/services/aerobic-treatment-systems/">aerobic treatment systems</a>
+    page covers the maintenance side in more detail.
+  </p>
+
+  <h2>What it costs</h2>
+  <p>
+    Advanced treatment is the single biggest cost factor in spring country.
+    Florida cost sources generally put the ENR premium at roughly $8,000 to
+    $20,000 above a conventional system, with total installed cost commonly in
+    the range of about $15,000 to $35,000, and annual maintenance often around
+    $800 to $1,500 per year, higher than a conventional system. These are typical
+    industry ranges, not a quote from us. Some Florida counties offer grants that
+    offset part of an upgrade. For a fuller breakdown, see our
+    <a class="link-inline" href="/guides/florida-drainfield-replacement-cost-guide/">Florida cost guide</a>.
+  </p>
+
+  <h2>How to find out if your parcel is affected</h2>
+  <p>
+    Start with the FDEP Priority Focus Area map to see whether your parcel falls
+    inside a PFA. Then, during a site evaluation, the licensed contractor you are
+    matched with confirms the requirement and designs an appropriate system. If
+    you are buying property, our
+    <a class="link-inline" href="/guides/buying-rural-property-septic-marion-county/">guide to buying rural property with septic</a>
+    walks through what to check before you close.
+  </p>
+
+  <Callout variant="verify" title="Confirm current rules">
+    <p>
+      Springs rules and BMAP boundaries are updated over time. Use this guide for
+      orientation, then confirm specifics with
+      <a class="link-inline" href="https://floridadep.gov/water/onsite-sewage/content/springs-protection-and-basin-management-action-plans-bmaps" target="_blank" rel="noopener">FDEP</a>
+      and the relevant water management district for your parcel.
+    </p>
+  </Callout>
+</GuideLayout>

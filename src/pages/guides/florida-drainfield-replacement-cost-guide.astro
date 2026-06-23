@@ -1,0 +1,143 @@
+---
+import GuideLayout from '../../layouts/GuideLayout.astro';
+import Callout from '../../components/Callout.astro';
+import { getGuide } from '../../data/guides';
+
+const guide = getGuide('florida-drainfield-replacement-cost-guide')!;
+
+const lead =
+  'Septic costs in Florida swing widely because soil, system type, and springs rules drive the price more than anything else. This guide collects typical ranges from industry and authoritative sources and explains the factors that move them, including the things national directories tend to leave out. These are typical ranges for context, not a quote.';
+
+const sources = [
+  { label: 'HomeGuide: drain field replacement cost', url: 'https://homeguide.com/costs/drain-leach-field-replacement-cost' },
+  { label: 'Angi: cost to install a septic system', url: 'https://www.angi.com/articles/what-does-it-cost-install-septic-system.htm' },
+  { label: 'HomeAdvisor: install a septic tank (cost data)', url: 'https://www.homeadvisor.com/cost/plumbing/install-a-septic-tank/' },
+  { label: 'Septic & Well Pro: Florida septic installation cost', url: 'https://septicandwell.com/articles/septic-installation-cost-florida' },
+  { label: 'HomeGuide: septic inspection cost', url: 'https://homeguide.com/costs/septic-tank-inspection-cost' },
+  { label: 'FDEP: Enhanced Nutrient-Reducing OSTDS (ENR)', url: 'https://floridadep.gov/water/onsite-sewage/content/permitting-enhanced-nutrient-reducing-onsite-sewage-treatment-and' },
+  { label: 'Section 381.0066, Florida Statutes (OSTDS fee ranges)', url: 'https://www.flsenate.gov/Laws/Statutes/2024/381.0066' },
+];
+
+const faqs = [
+  {
+    question: 'How much does a new septic system cost in Marion County?',
+    answer:
+      'Industry sources put a new conventional system in Florida in the range of about $5,000 to $20,000, with the final number driven by soil conditions, the number of bedrooms, lot access, and whether springs rules require an advanced nutrient-reducing system. A licensed contractor provides the actual price after a site evaluation.',
+  },
+  {
+    question: 'Why can a drainfield replacement be so expensive?',
+    answer:
+      'A full drainfield replacement involves permitting, a site evaluation, removing the failed field, and installing a properly sized new one, often with restoration afterward. Florida sources commonly cite roughly $5,000 to $15,000 or more for a conventional replacement, higher if the site needs an engineered or advanced system.',
+  },
+  {
+    question: 'Does an advanced ENR system really cost more?',
+    answer:
+      'Yes. Florida cost sources put the ENR premium at roughly $8,000 to $20,000 above a conventional system, with annual maintenance often around $800 to $1,500 per year. The systems are required in certain spring-protection areas. Some Florida counties offer upgrade grants. See our springs and BMAP guide for where the rules apply.',
+  },
+  {
+    question: 'Can Marion County Septic give me a price?',
+    answer:
+      'No. We are a free matching service, not a contractor, so we do not quote or perform work. Tell us about your property using the quote form and we connect you with a licensed local contractor who provides a free, no-obligation quote after evaluating your site.',
+  },
+  {
+    question: 'What raises or lowers the cost the most?',
+    answer:
+      'A high seasonal water table (which can require a mound or engineered system), restrictive soils, a springs Priority Focus Area that requires an ENR system, tight lot access, and more bedrooms all push cost up. Sandy, well-drained soil, an accessible lot, a smaller home, and replacing only the drainfield push cost down.',
+  },
+];
+---
+<GuideLayout guide={guide} lead={lead} sources={sources} faqs={faqs}>
+  <Callout variant="verify" title="These are ranges, not a quote">
+    <p>
+      The figures below are typical ranges compiled from industry and
+      authoritative sources, presented for orientation. They are not a price from
+      Marion County Septic, and they are not a guarantee. Only a licensed
+      contractor can quote your project after a site evaluation.
+    </p>
+  </Callout>
+
+  <h2>Typical Florida cost ranges</h2>
+  <table>
+    <thead>
+      <tr><th>Project</th><th>Typical range (Florida)</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>New conventional system (tank and drainfield)</td><td>$5,000 to $20,000</td></tr>
+      <tr><td>Drainfield replacement (conventional)</td><td>$5,000 to $15,000+</td></tr>
+      <tr><td>Aerobic treatment unit (ATU)</td><td>$10,000 to $20,000</td></tr>
+      <tr><td>Advanced ENR system (springs / BMAP areas)</td><td>about $15,000 to $35,000</td></tr>
+      <tr><td>Mound or engineered system (high water table)</td><td>about $15,000 to $35,000</td></tr>
+      <tr><td>Real-estate septic inspection</td><td>$250 to $500</td></tr>
+      <tr><td>Routine tank pumping (for context)</td><td>$250 to $600</td></tr>
+    </tbody>
+    <caption>Typical ranges compiled from HomeGuide, Angi, HomeAdvisor, and Florida-specific sources. Your project may fall outside these ranges.</caption>
+  </table>
+
+  <h2>The costs people forget</h2>
+  <p>
+    The headline number is rarely the whole story. These add-ons are common in
+    Florida, especially on rural or constrained lots:
+  </p>
+  <table>
+    <thead>
+      <tr><th>Add-on</th><th>Typical range</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Percolation / soil test (private)</td><td>$750 to $1,900</td></tr>
+      <tr><td>Engineering / system design</td><td>$500 to $5,000</td></tr>
+      <tr><td>Tank pump-out before replacement</td><td>$250 to $600</td></tr>
+      <tr><td>Yard and landscape restoration</td><td>$1,000 to $4,500</td></tr>
+      <tr><td>Tree or obstacle removal</td><td>$200 to $2,000 per tree</td></tr>
+      <tr><td>Lift / pump station (low-lying lots)</td><td>$3,000 to $5,000</td></tr>
+      <tr><td>ATU or ENR annual maintenance</td><td>$200 to $1,500 per year</td></tr>
+    </tbody>
+    <caption>Add-on ranges from Florida contractor and industry sources. Government permit and site-evaluation fees are separate.</caption>
+  </table>
+
+  <h2>Permit and site-evaluation fees</h2>
+  <p>
+    Government fees are separate from the contractor cost. Florida law sets fee
+    ranges in Section 381.0066, Florida Statutes (for example, roughly $25 to
+    $125 for permit issuance or a system inspection and $40 to $115 for a site
+    evaluation), and the exact current amounts are set by FDEP. Because Marion
+    County moved to FDEP on July 1, 2025, confirm current fees as described in our
+    <a class="link-inline" href="/guides/marion-county-septic-permit-guide/">Marion County permit guide</a>.
+  </p>
+
+  <h2>What drives the price up or down in Marion County</h2>
+  <p><strong>Pushes cost up:</strong></p>
+  <ul>
+    <li>A high seasonal water table, which can require a mound or other engineered system.</li>
+    <li>A springs Priority Focus Area that requires an
+      <a class="link-inline" href="/services/advanced-treatment-springs/">advanced ENR system</a>.</li>
+    <li>Restrictive soils, karst features, or difficult lot access.</li>
+    <li>More bedrooms, which means a larger system and drainfield.</li>
+  </ul>
+  <p><strong>Pushes cost down:</strong></p>
+  <ul>
+    <li>Sandy, well-drained soil, common on the Ocala uplands.</li>
+    <li>An accessible lot with room to work.</li>
+    <li>A smaller home with fewer bedrooms.</li>
+    <li>Replacing only the drainfield when the tank is still sound.</li>
+    <li>County grant programs, where available, for advanced-treatment upgrades.</li>
+  </ul>
+
+  <Callout variant="springs" title="Springs rules are the biggest local wildcard">
+    <p>
+      In the Silver Springs and Rainbow Springs BMAP Priority Focus Areas, an
+      advanced nutrient-reducing system can add five figures to a project. Before
+      you budget, find out whether your parcel is affected using our
+      <a class="link-inline" href="/guides/springs-bmap-advanced-treatment-guide/">springs and BMAP guide</a>.
+    </p>
+  </Callout>
+
+  <h2>Getting an actual number</h2>
+  <p>
+    A real price comes from a licensed contractor after a site evaluation, because
+    the soil and the rules for your specific parcel decide the system. Whether you
+    need a <a class="link-inline" href="/services/drainfield-replacement/">drainfield replacement</a>
+    or a <a class="link-inline" href="/services/septic-system-installation/">new system</a>,
+    tell us about your property and we connect you with a licensed local
+    contractor for a free, no-obligation quote.
+  </p>
+</GuideLayout>

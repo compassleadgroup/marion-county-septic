@@ -1,0 +1,56 @@
+---
+/*
+  Shared layout for the six guides. Provides the heading, honest byline,
+  lead, article body slot (.rich), authoritative sources, a CTA band, and an
+  FAQ block with FAQPage schema. Breadcrumbs use Home > guide title (there is
+  no /guides/ index by design, to keep the footprint tight).
+*/
+import BaseLayout from './BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Byline from '../components/Byline.astro';
+import SourcesList from '../components/SourcesList.astro';
+import CtaBand from '../components/CtaBand.astro';
+import FaqBlock from '../components/FaqBlock.astro';
+import type { Guide } from '../data/guides';
+import type { FaqItem } from '../lib/schema';
+
+interface Source {
+  label: string;
+  url: string;
+}
+interface Props {
+  guide: Guide;
+  lead: string;
+  sources?: Source[];
+  faqs?: FaqItem[];
+}
+const { guide, lead, sources = [], faqs = [] } = Astro.props;
+---
+<BaseLayout title={guide.title} description={guide.description}>
+  <Breadcrumbs
+    items={[
+      { name: 'Home', path: '/' },
+      { name: guide.title, path: `/guides/${guide.slug}/` },
+    ]}
+  />
+
+  <article class="container-narrow pb-14 pt-6">
+    <header>
+      <h1 class="font-heading text-3xl font-extrabold leading-tight text-spring-dark sm:text-4xl">
+        {guide.h1}
+      </h1>
+      <Byline />
+      <p class="mt-5 text-lg leading-relaxed text-ink/85">{lead}</p>
+    </header>
+
+    <div class="rich mt-2">
+      <slot />
+    </div>
+
+    <SourcesList sources={sources} />
+  </article>
+
+  <CtaBand />
+
+  {faqs.length > 0 && <FaqBlock faqs={faqs} />}
+</BaseLayout>

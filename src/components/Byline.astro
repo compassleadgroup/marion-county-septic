@@ -1,0 +1,17 @@
+---
+/*
+  Honest editorial byline. The author is the brand editorial team (no fabricated
+  individual). Links to /about/ where the resource and operating entity are
+  explained.
+*/
+import { editorial } from '../data/site';
+interface Props {
+  reviewedLabel?: string;
+}
+const { reviewedLabel = editorial.reviewedLabel } = Astro.props;
+---
+<p class="mt-4 text-sm text-ink/70">
+  By the <a class="link-inline" href="/about/">{editorial.author}</a>
+  <span class="mx-1.5 text-sage" aria-hidden="true">&middot;</span>
+  Reviewed {reviewedLabel}
+</p>

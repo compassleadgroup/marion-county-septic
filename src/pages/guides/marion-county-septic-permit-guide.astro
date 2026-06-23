@@ -1,0 +1,196 @@
+---
+import GuideLayout from '../../layouts/GuideLayout.astro';
+import Callout from '../../components/Callout.astro';
+import { getGuide } from '../../data/guides';
+
+const guide = getGuide('marion-county-septic-permit-guide')!;
+
+const lead =
+  'A new septic system or a full drainfield replacement in Marion County is a permitted project. This guide explains who administers septic permits now, how the process works, and the soil, sizing, and setback rules that shape every system. Rules change, so confirm current requirements with the Florida Department of Environmental Protection before you rely on anything here.';
+
+const sources = [
+  { label: 'FDEP Onsite Sewage Program', url: 'https://floridadep.gov/water/onsite-sewage' },
+  { label: 'FDEP OSTDS program transition (phases and dates)', url: 'https://floridadep.gov/water/onsite-sewage/content/program-update-phase-i-transition' },
+  { label: 'FDEP OSTDS permitting FAQ', url: 'https://floridadep.gov/water/onsite-sewage/content/onsite-sewage-faq-permitting' },
+  { label: 'FDEP OSTDS online permitting portal', url: 'https://osp.floridadep.gov/' },
+  { label: 'Chapter 62-6, Florida Administrative Code (OSTDS standards)', url: 'https://flrules.org/gateway/ChapterHome.asp?Chapter=62-6' },
+  { label: 'Section 381.0065, Florida Statutes (OSTDS)', url: 'https://www.flsenate.gov/laws/statutes/2024/381.0065' },
+  { label: 'Section 381.0066, Florida Statutes (OSTDS fees)', url: 'https://www.flsenate.gov/Laws/Statutes/2024/381.0066' },
+  { label: 'SB 712 (2020), the Clean Waterways Act', url: 'https://www.flsenate.gov/Session/Bill/2020/712' },
+  { label: 'UF/IFAS: Handbook of Florida Water Regulation (OSTDS, FE614)', url: 'https://edis.ifas.ufl.edu/fe614' },
+  { label: 'Florida Department of Health in Marion County: Septic Systems', url: 'https://marion.floridahealth.gov/programs-and-services/environmental-health/septic-systems/index.html' },
+];
+
+const faqs = [
+  {
+    question: 'Who issues septic permits in Marion County?',
+    answer:
+      'As of July 1, 2025, onsite sewage (OSTDS) permits in Marion County are administered by the Florida Department of Environmental Protection (FDEP), not the county health department. The transfer follows the 2020 Clean Waterways Act. Applications and inspections are handled through the FDEP OSTDS online portal.',
+  },
+  {
+    question: 'How long does a septic permit take in Florida?',
+    answer:
+      'For a standard home, the process from application through site evaluation, construction, and final inspection commonly runs about 4 to 12 weeks, depending on the site, the system type, and scheduling. A licensed contractor manages the steps. Confirm current timelines with FDEP.',
+  },
+  {
+    question: 'What happens during the site evaluation and soil test?',
+    answer:
+      'An evaluator examines the soil with borings to identify soil texture and the estimated seasonal high water table, which together determine what system the lot can support and how it must be sized. Florida rules require unsaturated soil between the bottom of the drainfield and the seasonal high water table.',
+  },
+  {
+    question: 'How much are Marion County septic permit fees?',
+    answer:
+      'Florida law sets fee ranges in Section 381.0066, Florida Statutes: roughly $25 to $125 for application review, permit issuance, or system inspection, and $40 to $115 for a site evaluation. The exact current amounts charged by FDEP are set in Rule 62-6.030, Florida Administrative Code. Confirm current fees with FDEP, since the schedule changed when the program moved to FDEP.',
+  },
+  {
+    question: 'Will my system have to be an advanced nutrient-reducing system?',
+    answer:
+      'It may, if your parcel is inside a Priority Focus Area of the Silver Springs or Rainbow Springs BMAP. In those areas, new and many replacement systems must be enhanced nutrient-reducing (ENR) systems. See our springs and BMAP guide, and have the contractor confirm your parcel during the site evaluation.',
+  },
+];
+---
+<GuideLayout guide={guide} lead={lead} sources={sources} faqs={faqs}>
+  <Callout variant="verify" title="Verify before you rely on this">
+    <p>
+      Septic regulation in Florida has changed in recent years, including which
+      agency runs the program and the exact fee schedule. Treat this guide as a
+      plain-language overview, not legal or regulatory advice, and confirm
+      current rules and fees with the
+      <a class="link-inline" href="https://floridadep.gov/water/onsite-sewage" target="_blank" rel="noopener">Florida Department of Environmental Protection</a>
+      before you make decisions or payments.
+    </p>
+  </Callout>
+
+  <h2>Who administers septic permits in Marion County</h2>
+  <p>
+    In Florida, an onsite sewage treatment and disposal system, or OSTDS, is what
+    most people call a septic system. For years these systems were permitted by
+    the Florida Department of Health through county health departments. That
+    changed. Under the 2020 Clean Waterways Act, the OSTDS program is moving to
+    the Florida Department of Environmental Protection (FDEP) in phases, and
+    <strong>Marion County transitioned to FDEP on July 1, 2025</strong>.
+  </p>
+  <p>
+    In practice, that means new permits, site evaluations, and inspections for
+    Marion County are now handled by FDEP, largely through its online OSTDS
+    portal. The governing statute is Section 381.0065, Florida Statutes, and the
+    technical standards live in Chapter 62-6 of the Florida Administrative Code,
+    the rule chapter that replaced the former Chapter 64E-6 used under the health
+    department.
+  </p>
+
+  <h2>The permit process, step by step</h2>
+  <p>
+    A new system and a full drainfield replacement follow the same general path.
+    A licensed contractor usually manages it for you, though the property owner is
+    the legal permit holder.
+  </p>
+  <ol>
+    <li><strong>Application.</strong> The contractor submits the construction permit application and fee, typically through the FDEP OSTDS portal.</li>
+    <li><strong>Site evaluation.</strong> An evaluator examines the soil and site conditions, including soil borings to read the soil profile and estimate the seasonal high water table.</li>
+    <li><strong>Soil and loading assessment.</strong> The soil texture and water table determine the soil loading rate and which system types the lot can support.</li>
+    <li><strong>System design.</strong> The system is designed for the home size and the site conditions, including the drainfield size and any advanced treatment the location requires.</li>
+    <li><strong>Construction permit.</strong> FDEP reviews the application against the site evaluation and, if it approves, issues the construction permit.</li>
+    <li><strong>Construction.</strong> The contractor installs the permitted system.</li>
+    <li><strong>Final inspection and approval.</strong> An inspection confirms the tank, drainfield, setbacks, and grading before the system is approved for use.</li>
+  </ol>
+  <p>
+    For a standard home, expect roughly four to twelve weeks from application to
+    approval, depending on the site, the system, and scheduling.
+  </p>
+
+  <h2>Site evaluation and soil testing</h2>
+  <p>
+    The site evaluation is the part homeowners most often underestimate, and it is
+    where Marion County geology matters. The evaluator reads the soil profile to
+    find the soil texture and the estimated seasonal high water table. Florida
+    rules require unsaturated soil between the bottom of the drainfield and that
+    water table, so a high seasonal water table can push a site toward a mound or
+    other engineered system. Sandy, well-drained soils, which are common on the
+    Ocala karst uplands, are generally easier and cheaper to work with than wet or
+    restrictive soils.
+  </p>
+
+  <h2>Drainfield sizing basics</h2>
+  <p>
+    Drainfield sizing in Florida is governed by Rule 62-6.008, Florida
+    Administrative Code. A few principles drive it:
+  </p>
+  <ul>
+    <li>System size is based on estimated sewage flow, with a minimum baseline used for small homes.</li>
+    <li>Estimated flow increases with each additional bedroom or each additional increment of building area.</li>
+    <li>There is a minimum drainfield area, with additional area added for each bedroom beyond two.</li>
+    <li>The soil loading rate, set by the soil texture, converts that flow into the required drainfield area.</li>
+    <li>Where the soil profile changes, sizing is based on the most restrictive soil found within a set depth below the drainfield.</li>
+    <li>New systems also require a minimum septic tank capacity that grows with the number of bedrooms.</li>
+  </ul>
+  <p>
+    The exact per-bedroom flow figures and loading-rate tables are in Rule
+    62-6.008. Your contractor applies them to your specific soil results, which is
+    why two lots on the same street can need different drainfields.
+  </p>
+
+  <h2>Setbacks</h2>
+  <p>
+    Rule 62-6.005, Florida Administrative Code, sets minimum separation distances.
+    These shape where a system can go, especially on smaller or waterfront lots:
+  </p>
+  <ul>
+    <li><strong>75 feet</strong> from a private potable well.</li>
+    <li><strong>100 feet</strong> from a public potable well serving up to 2,000 gallons per day, and <strong>200 feet</strong> from larger public wells.</li>
+    <li><strong>75 feet</strong> from surface water, such as a lake, river, or wetland.</li>
+    <li><strong>5 feet</strong> from property lines.</li>
+    <li><strong>5 feet</strong> from building foundations.</li>
+    <li><strong>10 feet</strong> from potable water lines (with exceptions for sleeved or stronger pipe).</li>
+    <li><strong>15 feet</strong> from certain drainage swales and dry retention areas.</li>
+  </ul>
+  <p>
+    On riverfront lots near Rainbow Springs in
+    <a class="link-inline" href="/dunnellon/">Dunnellon</a> or lakefront lots on
+    Lake Weir in <a class="link-inline" href="/ocklawaha/">Ocklawaha</a>, the
+    surface-water setback can be the single biggest constraint on where a
+    drainfield fits.
+  </p>
+
+  <h2>Permit fees</h2>
+  <p>
+    Florida law sets fee ranges in Section 381.0066, Florida Statutes. The
+    statute provides for roughly:
+  </p>
+  <ul>
+    <li><strong>$25 to $125</strong> for application review, permit issuance, or a system inspection.</li>
+    <li><strong>$40 to $115</strong> for a site evaluation.</li>
+    <li><strong>$150 to $300</strong> for an annual operating permit on an engineer-designed performance-based system.</li>
+  </ul>
+  <Callout variant="verify" title="Fees changed with the FDEP transition">
+    <p>
+      The exact amounts FDEP charges are set in Rule 62-6.030, Florida
+      Administrative Code, and the schedule changed when the program moved to
+      FDEP. The figures above are the statutory ranges, not a quote. Confirm the
+      current Marion County fees directly with FDEP before you budget.
+    </p>
+  </Callout>
+
+  <h2>When advanced treatment is required</h2>
+  <p>
+    Much of Marion County sits in spring-protection zones. Inside a Priority Focus
+    Area of the Silver Springs or Rainbow Springs Basin Management Action Plan
+    (BMAP), new and many replacement systems must be enhanced nutrient-reducing
+    (ENR) systems that cut total nitrogen by at least 65 percent. This is the
+    single biggest factor that can change the cost and design of a system here.
+    Our <a class="link-inline" href="/guides/springs-bmap-advanced-treatment-guide/">springs and BMAP guide</a>
+    explains where these rules apply and what they mean.
+  </p>
+
+  <h2>How this connects to your project</h2>
+  <p>
+    Whether you are planning a
+    <a class="link-inline" href="/services/septic-system-installation/">new septic system</a>,
+    a <a class="link-inline" href="/services/drainfield-replacement/">drainfield replacement</a>,
+    or <a class="link-inline" href="/services/septic-for-new-construction/">septic for new construction</a>,
+    the permit and the site evaluation come first. Marion County Septic is a free
+    matching service. Tell us about your property and we connect you with a
+    licensed local contractor who handles the FDEP permit, the soil evaluation,
+    and the installation, then provides a free quote.
+  </p>
+</GuideLayout>

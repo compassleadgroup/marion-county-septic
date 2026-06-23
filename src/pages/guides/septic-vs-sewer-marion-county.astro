@@ -1,0 +1,98 @@
+---
+import GuideLayout from '../../layouts/GuideLayout.astro';
+import Callout from '../../components/Callout.astro';
+import { getGuide } from '../../data/guides';
+
+const guide = getGuide('septic-vs-sewer-marion-county')!;
+
+const lead =
+  'Marion County is one of Florida’s most septic-dependent counties, with roughly 90,000 homes on onsite systems. At the same time, the county is expanding central sewer in priority areas to protect the springs. This guide explains the split, what septic-to-sewer conversion means for owners, and how to tell what serves a property.';
+
+const sources = [
+  { label: 'Marion County Utilities: septic-to-sewer projects', url: 'https://utilities.marionfl.org/i-want-to/learn-about-septic-to-sewer-projects' },
+  { label: 'Marion County: wastewater feasibility study', url: 'https://www.marionfl.org/agencies-departments/departments-facilities-offices/utilities/wastewater-feasibility-study' },
+  { label: 'FDEP: Springs Protection and BMAPs (OSTDS)', url: 'https://floridadep.gov/water/onsite-sewage/content/springs-protection-and-basin-management-action-plans-bmaps' },
+  { label: 'Save Lake Weir: septic and water quality', url: 'https://savelakeweir.com/septic/' },
+  { label: 'Belleview wastewater plant expansion (WCJB, 2025)', url: 'https://www.wcjb.com/2025/07/02/state-lawmakers-award-belleview-1-million-wastewater-treatment-plant-expansion/' },
+];
+
+const faqs = [
+  {
+    question: 'Is my Marion County property on septic or sewer?',
+    answer:
+      'Many properties, especially outside city cores and in rural areas, are on septic. The clearest way to confirm is to check with Marion County Utilities or the relevant city, or have a licensed contractor confirm during a visit. If you receive a sewer bill, you are on sewer; if not, you are likely on septic.',
+  },
+  {
+    question: 'What is septic-to-sewer conversion?',
+    answer:
+      'It is the process of extending central sewer to an area currently on septic and connecting homes to it, often to reduce nutrient loading to the springs or a lake. Marion County is running a multi-phase program, funded in part by American Rescue Plan Act money, with Silver Springs Shores as a top priority.',
+  },
+  {
+    question: 'Do I have to connect to sewer if it reaches my street?',
+    answer:
+      'It depends on local rules and the specific program. In some areas connection becomes mandatory within a set time after sewer is available. Check with Marion County Utilities for the requirements that apply to your address.',
+  },
+  {
+    question: 'If sewer is years away, should I still replace a failed septic system?',
+    answer:
+      'Usually yes. A failed system is a health and property issue you cannot leave unaddressed, and waiting for a sewer project that may be years out is rarely practical. A licensed contractor can advise whether a repair, a replacement, or an interim option makes sense for your situation.',
+  },
+];
+---
+<GuideLayout guide={guide} lead={lead} sources={sources} faqs={faqs}>
+  <h2>How septic-dependent is Marion County?</h2>
+  <p>
+    Heavily. Roughly 90,000 homes in the county rely on septic systems, a
+    reflection of decades of rural and exurban growth on land that central sewer
+    never reached. As the Ocala metro keeps growing, new homes continue to go in
+    on septic across the unincorporated county.
+  </p>
+
+  <h2>Why the county is expanding sewer</h2>
+  <p>
+    The driver is water quality. Septic systems contribute a meaningful share of
+    the nitrogen reaching Silver Springs and Rainbow Springs, and a separate share
+    of the nutrient load to Lake Weir. To address it, Marion County is running a
+    multi-phase septic-to-sewer conversion program, funded in part by American
+    Rescue Plan Act dollars, with the Silver Springs Shores area as a stated top
+    priority. Cities are investing too: Belleview is expanding its wastewater
+    treatment plant explicitly to support Silver Springs BMAP goals.
+  </p>
+
+  <Callout variant="springs" title="Springs protection links the two">
+    <p>
+      Where conversion is not feasible, the same goal is pursued through
+      <a class="link-inline" href="/services/advanced-treatment-springs/">advanced nutrient-reducing systems</a>.
+      Sewer where it makes sense, ENR systems where it does not. Our
+      <a class="link-inline" href="/guides/springs-bmap-advanced-treatment-guide/">springs and BMAP guide</a>
+      explains the rules.
+    </p>
+  </Callout>
+
+  <h2>Septic and sewer compared</h2>
+  <table>
+    <thead>
+      <tr><th>Consideration</th><th>Septic</th><th>Central sewer</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Up-front cost</td><td>Owner pays for the system</td><td>Connection and assessment fees</td></tr>
+      <tr><td>Ongoing cost</td><td>Periodic pumping and maintenance</td><td>Monthly sewer bill</td></tr>
+      <tr><td>Responsibility</td><td>The property owner</td><td>The utility</td></tr>
+      <tr><td>Availability</td><td>Most rural and acreage lots</td><td>Cities and priority conversion areas</td></tr>
+    </tbody>
+    <caption>General comparison. Specifics depend on your location and the applicable program.</caption>
+  </table>
+
+  <h2>What this means for you</h2>
+  <p>
+    If you are on septic and sewer is not coming soon, normal care and timely
+    repair or replacement are the path. If you are buying, factor the septic
+    system into the deal, as covered in our
+    <a class="link-inline" href="/guides/buying-rural-property-septic-marion-county/">guide to buying rural property</a>.
+    If you need a
+    <a class="link-inline" href="/services/drainfield-replacement/">drainfield replacement</a>
+    or a <a class="link-inline" href="/services/septic-system-installation/">new system</a>,
+    tell us about your property and we connect you with a licensed local
+    contractor for a free quote.
+  </p>
+</GuideLayout>

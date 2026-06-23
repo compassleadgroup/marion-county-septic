@@ -1,0 +1,25 @@
+---
+/*
+  Fact box for town pages (and anywhere a compact labeled fact list helps).
+*/
+interface Fact {
+  label: string;
+  value: string;
+}
+interface Props {
+  facts: Fact[];
+  heading?: string;
+}
+const { facts, heading = 'Local snapshot' } = Astro.props;
+---
+<aside class="rounded-2xl border border-sage bg-white p-6">
+  <h2 class="font-heading text-lg font-bold text-spring-dark">{heading}</h2>
+  <dl class="mt-4 space-y-3">
+    {facts.map((f) => (
+      <div class="border-b border-sage/60 pb-3 last:border-0 last:pb-0">
+        <dt class="text-xs font-semibold uppercase tracking-wide text-aqua">{f.label}</dt>
+        <dd class="mt-0.5 text-ink/90">{f.value}</dd>
+      </div>
+    ))}
+  </dl>
+</aside>

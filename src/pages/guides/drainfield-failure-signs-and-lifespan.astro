@@ -1,0 +1,95 @@
+---
+import GuideLayout from '../../layouts/GuideLayout.astro';
+import Callout from '../../components/Callout.astro';
+import { getGuide } from '../../data/guides';
+
+const guide = getGuide('drainfield-failure-signs-and-lifespan')!;
+
+const lead =
+  'The drainfield is the part of a septic system that usually fails first, and it is the most expensive part to replace. Knowing how long a drainfield lasts, the early warning signs, and what shortens its life can help Marion County owners act before a small problem becomes a full replacement.';
+
+const sources = [
+  { label: 'US EPA: How to care for your septic system', url: 'https://www.epa.gov/septic/how-care-your-septic-system' },
+  { label: 'US EPA: SepticSmart homeowner resources', url: 'https://www.epa.gov/septic/septicsmart-homeowners' },
+  { label: 'UF/IFAS: Handbook of Florida Water Regulation (OSTDS, FE614)', url: 'https://edis.ifas.ufl.edu/fe614' },
+  { label: 'HomeGuide: drain field replacement cost', url: 'https://homeguide.com/costs/drain-leach-field-replacement-cost' },
+];
+
+const faqs = [
+  {
+    question: 'How long does a drainfield last?',
+    answer:
+      'It varies widely. A conventional drainfield that is properly sized and well maintained often lasts on the order of 20 to 30 years, and sometimes longer, but overloading, lack of tank pumping, and a high water table can shorten that significantly. Florida’s wet-season water table adds stress that can shorten field life.',
+  },
+  {
+    question: 'What are the first signs of drainfield failure?',
+    answer:
+      'Common early signs include slow drains throughout the house, sewage odors indoors or in the yard, soggy or unusually green grass over the drainfield, gurgling plumbing, and backups. Any of these warrants a prompt inspection by a licensed contractor.',
+  },
+  {
+    question: 'Can a failing drainfield be repaired, or does it need replacement?',
+    answer:
+      'It depends on the cause. Sometimes the issue is a clogged line or a distribution box that can be repaired, but a drainfield that has reached the end of its life usually needs replacement. A licensed contractor diagnoses the cause and recommends the right fix.',
+  },
+  {
+    question: 'What shortens a drainfield’s life the most?',
+    answer:
+      'Not pumping the septic tank on schedule (which lets solids reach and clog the field), hydraulic overloading from too much water, driving or parking over the field, tree roots, and a chronically high water table are the biggest culprits.',
+  },
+];
+---
+<GuideLayout guide={guide} lead={lead} sources={sources} faqs={faqs}>
+  <h2>How long a drainfield lasts</h2>
+  <p>
+    There is no single number, but a properly sized, well-maintained conventional
+    drainfield often lasts on the order of 20 to 30 years, and sometimes longer.
+    Just as often, a field fails early because it was overloaded, the tank was
+    never pumped, or the site simply has a high water table. In Marion County, the
+    wet-season high water table is a real factor, since a saturated field cannot
+    absorb effluent the way a dry one can.
+  </p>
+
+  <h2>The warning signs, from subtle to serious</h2>
+  <ul>
+    <li><strong>Slow drains</strong> across multiple fixtures, not just one.</li>
+    <li><strong>Odors</strong> of sewage indoors, near the tank, or over the drainfield.</li>
+    <li><strong>Soggy ground or lush, fast-growing grass</strong> over the drainfield, even in dry weather.</li>
+    <li><strong>Gurgling</strong> in drains and toilets.</li>
+    <li><strong>Backups</strong> into the lowest drains in the home.</li>
+    <li><strong>Standing effluent</strong> or a sheen on the surface near the field.</li>
+  </ul>
+  <Callout variant="verify" title="Do not wait on these">
+    <p>
+      Surfacing effluent and indoor backups are health concerns, not just
+      inconveniences. If you see them, arrange an inspection promptly. A licensed
+      contractor can tell you whether a repair will hold or a
+      <a class="link-inline" href="/services/drainfield-replacement/">drainfield replacement</a>
+      is needed.
+    </p>
+  </Callout>
+
+  <h2>What shortens a drainfield’s life</h2>
+  <ul>
+    <li><strong>Skipping tank pumping.</strong> Solids carry over and clog the field, the most common preventable cause of failure.</li>
+    <li><strong>Too much water.</strong> Leaks, heavy simultaneous use, and stormwater routed onto the field overload it.</li>
+    <li><strong>Weight on the field.</strong> Vehicles, equipment, and structures compact the soil and crush lines.</li>
+    <li><strong>Roots.</strong> Trees and shrubs too close can invade the lines.</li>
+    <li><strong>The wrong things down the drain.</strong> Grease, wipes, and harsh chemicals disrupt the system.</li>
+    <li><strong>A high water table.</strong> Common in parts of Marion County, especially in the rainy season.</li>
+  </ul>
+
+  <h2>Getting ahead of it</h2>
+  <p>
+    Routine tank pumping and sensible water use are the cheapest insurance there
+    is. When a field does reach the end of its life, a replacement is a permitted
+    project sized for your soil, and in a springs Priority Focus Area it may need
+    to be an
+    <a class="link-inline" href="/services/advanced-treatment-springs/">advanced nutrient-reducing system</a>.
+    For likely costs, see our
+    <a class="link-inline" href="/guides/florida-drainfield-replacement-cost-guide/">Florida cost guide</a>;
+    for the permit path, see our
+    <a class="link-inline" href="/guides/marion-county-septic-permit-guide/">Marion County permit guide</a>.
+    When you are ready, tell us about your property and we connect you with a
+    licensed local contractor for a free quote.
+  </p>
+</GuideLayout>

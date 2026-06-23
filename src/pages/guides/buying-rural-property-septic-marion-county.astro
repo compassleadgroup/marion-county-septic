@@ -1,0 +1,94 @@
+---
+import GuideLayout from '../../layouts/GuideLayout.astro';
+import Callout from '../../components/Callout.astro';
+import { getGuide } from '../../data/guides';
+
+const guide = getGuide('buying-rural-property-septic-marion-county')!;
+
+const lead =
+  'Most rural and acreage property in Marion County is on septic, and the system can be one of the largest hidden variables in a purchase. This guide helps buyers and real-estate agents know what to check before closing, whether the lot has an existing system or is raw land.';
+
+const sources = [
+  { label: 'Septic & Well Pro: Florida septic inspection for home buyers', url: 'https://septicandwell.com/articles/septic-inspection-home-buyers-florida' },
+  { label: 'FDEP: Springs Priority Focus Areas interactive map', url: 'https://www.arcgis.com/apps/View/index.html?appid=1afdd97c67584c06840019241becde74' },
+  { label: 'FDEP: OSTDS permitting FAQ', url: 'https://floridadep.gov/water/onsite-sewage/content/onsite-sewage-faq-permitting' },
+  { label: 'FDEP: Springs Protection and BMAPs (OSTDS)', url: 'https://floridadep.gov/water/onsite-sewage/content/springs-protection-and-basin-management-action-plans-bmaps' },
+  { label: 'UF/IFAS: Handbook of Florida Water Regulation (OSTDS, FE614)', url: 'https://edis.ifas.ufl.edu/fe614' },
+];
+
+const faqs = [
+  {
+    question: 'Should I get a septic inspection before buying a home on septic?',
+    answer:
+      'Yes. A pre-purchase septic inspection is one of the most cost-effective checks you can make, since a failed system can cost many thousands to replace. In Florida, inspections commonly run about $250 to $500. Most lenders expect one, and a licensed contractor can perform it.',
+  },
+  {
+    question: 'How do I know if vacant land can support a septic system?',
+    answer:
+      'You do not know for certain until a site evaluation reads the soil and the seasonal high water table. A real-estate contract on raw land can be made contingent on a passing site evaluation. The result determines what system the lot supports and how much it will cost.',
+  },
+  {
+    question: 'Could springs rules add cost to a property I am buying?',
+    answer:
+      'Yes. If the parcel is inside a Silver Springs or Rainbow Springs Priority Focus Area, a new or replacement system may have to be an advanced nutrient-reducing (ENR) system, which adds significant cost. Check the FDEP Priority Focus Area map before you close.',
+  },
+  {
+    question: 'What records should I ask the seller for?',
+    answer:
+      'Ask for the original construction permit, any repair or modification permits, the number of bedrooms the system was permitted for, and recent pumping or maintenance records. A mismatch between the permitted bedrooms and the actual house is a common and costly problem.',
+  },
+];
+---
+<GuideLayout guide={guide} lead={lead} sources={sources} faqs={faqs}>
+  <h2>Why septic is a buyer issue, not a formality</h2>
+  <p>
+    On acreage, horse property, and rural homesites across Marion County, the
+    septic system is the wastewater infrastructure, and replacing or upgrading one
+    can run well into five figures. Treat it like the roof or the well: something
+    to understand before you commit, not after.
+  </p>
+
+  <h2>Buying a home with an existing system</h2>
+  <p>Before closing, work through this checklist:</p>
+  <ul>
+    <li><strong>Get a septic inspection.</strong> A licensed contractor checks the tank, the drainfield, and the flow. See our <a class="link-inline" href="/services/septic-inspections-real-estate/">real-estate septic inspection</a> page.</li>
+    <li><strong>Match the permit to the house.</strong> Confirm the system was permitted for at least as many bedrooms as the home has. An under-sized system is a future problem.</li>
+    <li><strong>Ask for records.</strong> Construction and repair permits, pumping history, and any maintenance contracts for an advanced system.</li>
+    <li><strong>Locate the system and the well.</strong> Florida requires a drainfield to sit at least 75 feet from a private well, among other setbacks. Crowded older lots sometimes fall short.</li>
+    <li><strong>Check the springs status.</strong> If the parcel is in a Priority Focus Area, a future replacement may need to be an ENR system.</li>
+  </ul>
+
+  <h2>Buying raw land</h2>
+  <p>
+    On vacant land, there is no guarantee a buildable, affordable system will fit
+    until the soil is tested. The seasonal high water table, the soil texture, and
+    the lot dimensions all decide what is possible.
+  </p>
+  <Callout variant="info" title="Make the offer contingent on a site evaluation">
+    <p>
+      For raw land, consider making the purchase contingent on a passing OSTDS
+      site evaluation. It tells you whether a conventional system works, whether
+      you will need a mound or engineered system, and whether springs rules apply,
+      all of which change the budget. Our
+      <a class="link-inline" href="/guides/marion-county-septic-permit-guide/">permit guide</a>
+      explains the evaluation.
+    </p>
+  </Callout>
+
+  <h2>For real-estate agents</h2>
+  <p>
+    A septic inspection is a natural transaction trigger, and being the agent who
+    flags it early builds trust. Pointing buyers and sellers to neutral, accurate
+    information on permits, springs rules, and likely costs reduces surprises late
+    in a deal. You are welcome to share these guides with clients.
+  </p>
+
+  <h2>How we help</h2>
+  <p>
+    Marion County Septic is a free matching service. If a buyer or seller needs an
+    inspection or a quote on a new or replacement system, tell us about the
+    property and we connect them with a licensed local contractor. For likely
+    numbers, see our
+    <a class="link-inline" href="/guides/florida-drainfield-replacement-cost-guide/">Florida cost guide</a>.
+  </p>
+</GuideLayout>

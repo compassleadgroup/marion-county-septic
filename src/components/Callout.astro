@@ -1,0 +1,35 @@
+---
+/*
+  Callout box. Variants:
+    - 'info'    neutral context (mist/spring)
+    - 'springs' springs/BMAP/advanced-treatment notes (reserved aqua accent)
+    - 'verify'  "confirm current rules with FDEP/the county" disclaimers (ochre)
+*/
+interface Props {
+  variant?: 'info' | 'springs' | 'verify';
+  title?: string;
+}
+const { variant = 'info', title } = Astro.props;
+
+const styles = {
+  info: 'border-spring/30 bg-mist',
+  springs: 'border-aqua/40 bg-aqua/10',
+  verify: 'border-ochre/40 bg-ochre/10',
+};
+const dot = {
+  info: 'var(--color-spring)',
+  springs: 'var(--color-aqua)',
+  verify: 'var(--color-ochre-dark)',
+};
+---
+<aside class={`my-6 rounded-xl border p-5 ${styles[variant]}`}>
+  {title && (
+    <p class="flex items-center gap-2 font-heading font-bold text-spring-dark">
+      <span class="inline-block h-2.5 w-2.5 rounded-full" style={`background-color:${dot[variant]}`} aria-hidden="true"></span>
+      {title}
+    </p>
+  )}
+  <div class={title ? 'mt-2 text-ink/85' : 'text-ink/85'}>
+    <slot />
+  </div>
+</aside>
