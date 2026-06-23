@@ -1,0 +1,13 @@
+---
+/*
+  Header disclosure strip. Appears on EVERY page, above the main nav.
+  Wording and styling are fixed by COMPLIANCE_STANDARDS.md (FTC net-impression
+  doctrine: a reasonable consumer must actually encounter this). Do not hide it.
+*/
+import { compliance } from '../data/site';
+---
+<div class="bg-gray-100 text-gray-700 text-xs sm:text-sm">
+  <p class="container-x py-1.5 text-center leading-snug">
+    {compliance.disclosureStrip}
+  </p>
+</div>

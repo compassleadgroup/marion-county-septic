@@ -1,0 +1,201 @@
+---
+/*
+  Quote request form. Compliance-critical (COMPLIANCE_STANDARDS.md):
+    - Disclosure about contractor data-sharing appears directly above the form.
+    - TCPA consent checkbox sits directly above submit, is NOT pre-checked, and
+      blocks submit when unchecked (required attribute).
+    - "Privacy Policy" in the consent is a real link to /privacy/.
+    - Honeypot field for spam. Web3Forms access key comes from an env var only.
+  On submit: posts to Web3Forms, fires a GA4 generate_lead event, then redirects
+  to /thank-you/. With JS disabled, the native POST + redirect field is the
+  fallback path.
+
+  TODO (before paid traffic): integrate TrustedForm or Jornaya LeadiD to capture
+  a TCPA consent token. See COMPLIANCE_STANDARDS.md.
+*/
+import { site, phone, keys, compliance } from '../data/site';
+import { townNames } from '../data/towns';
+
+interface Props {
+  id?: string;
+  heading?: string;
+  intro?: string;
+}
+const {
+  id = 'quote',
+  heading = 'Get a free quote from a licensed contractor',
+  intro = 'Tell us about your property and project. We match you with a licensed local septic contractor who can schedule your free, no-obligation quote.',
+} = Astro.props;
+
+const projectTypes = [
+  'New septic system installation',
+  'Drainfield replacement',
+  'Aerobic treatment system',
+  'Advanced treatment near a spring',
+  'Septic for new construction',
+  'Septic inspection for a home sale',
+  'Other / not sure',
+];
+const lotStatuses = ['Existing home', 'Raw land', 'New build'];
+const timelines = [
+  'As soon as possible',
+  'Within 1 month',
+  '1 to 3 months',
+  '3 to 6 months',
+  'Just researching',
+];
+
+const fieldClass =
+  'mt-1 w-full rounded-md border border-sage bg-white px-3 py-2.5 text-ink placeholder:text-ink/40';
+const labelClass = 'block text-sm font-medium text-spring-dark';
+
+const redirectUrl = `${site.url}/thank-you/`;
+---
+<section id={id} class="scroll-mt-24">
+  <div class="rounded-2xl border border-sage bg-white p-6 shadow-sm sm:p-8">
+    <h2 class="font-heading text-2xl font-bold text-spring-dark">{heading}</h2>
+    <p class="mt-2 text-ink/80">{intro}</p>
+
+    <!-- Required disclosure directly above the form -->
+    <p class="mt-4 rounded-md bg-mist px-4 py-3 text-sm text-ink/80">
+      {compliance.formDisclosure}
+    </p>
+
+    <form
+      id={`${id}-form`}
+      action="https://api.web3forms.com/submit"
+      method="POST"
+      class="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2"
+    >
+      <!-- Web3Forms config (access key from env var, domain-locked) -->
+      <input type="hidden" name="access_key" value={keys.web3forms} />
+      <input type="hidden" name="subject" value="New Lead: Marion County Septic quote request" />
+      <input type="hidden" name="from_name" value="Marion County Septic Website" />
+      <input type="hidden" name="redirect" value={redirectUrl} />
+
+      <!-- Honeypot (hidden from users) -->
+      <input type="checkbox" name="botcheck" class="hidden" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true" />
+
+      <div class="sm:col-span-1">
+        <label class={labelClass} for={`${id}-name`}>Name</label>
+        <input class={fieldClass} id={`${id}-name`} name="name" type="text" autocomplete="name" required />
+      </div>
+
+      <div class="sm:col-span-1">
+        <label class={labelClass} for={`${id}-phone`}>Phone</label>
+        <input class={fieldClass} id={`${id}-phone`} name="phone" type="tel" autocomplete="tel" required />
+      </div>
+
+      <div class="sm:col-span-1">
+        <label class={labelClass} for={`${id}-email`}>Email</label>
+        <input class={fieldClass} id={`${id}-email`} name="email" type="email" autocomplete="email" required />
+      </div>
+
+      <div class="sm:col-span-1">
+        <label class={labelClass} for={`${id}-town`}>Town / area</label>
+        <select class={fieldClass} id={`${id}-town`} name="town_or_area" required>
+          <option value="" selected disabled>Select your area</option>
+          {townNames.map((t) => <option value={t}>{t}</option>)}
+          <option value="Other / not sure">Other / not sure</option>
+        </select>
+      </div>
+
+      <div class="sm:col-span-1">
+        <label class={labelClass} for={`${id}-project`}>Project type</label>
+        <select class={fieldClass} id={`${id}-project`} name="project_type" required>
+          <option value="" selected disabled>Select a project type</option>
+          {projectTypes.map((p) => <option value={p}>{p}</option>)}
+        </select>
+      </div>
+
+      <div class="sm:col-span-1">
+        <label class={labelClass} for={`${id}-lot`}>Property / lot status</label>
+        <select class={fieldClass} id={`${id}-lot`} name="lot_status" required>
+          <option value="" selected disabled>Select lot status</option>
+          {lotStatuses.map((l) => <option value={l}>{l}</option>)}
+        </select>
+      </div>
+
+      <div class="sm:col-span-1">
+        <label class={labelClass} for={`${id}-timeline`}>Timeline</label>
+        <select class={fieldClass} id={`${id}-timeline`} name="timeline" required>
+          <option value="" selected disabled>Select a timeline</option>
+          {timelines.map((t) => <option value={t}>{t}</option>)}
+        </select>
+      </div>
+
+      <div class="sm:col-span-2">
+        <label class={labelClass} for={`${id}-desc`}>Brief description</label>
+        <textarea class={fieldClass} id={`${id}-desc`} name="description" rows="4" placeholder="Lot size, what is happening with the current system, anything a contractor should know."></textarea>
+      </div>
+
+      <!-- TCPA consent: directly above submit, never pre-checked -->
+      <div class="sm:col-span-2">
+        <label class="flex items-start gap-3 text-sm text-ink/80">
+          <input type="checkbox" name="tcpa_consent" required class="mt-1 h-5 w-5 shrink-0 rounded border-sage" />
+          <span>
+            {compliance.tcpaConsent.pre}
+            <a class="link-inline" href={compliance.tcpaConsent.linkHref}>{compliance.tcpaConsent.linkText}</a>{compliance.tcpaConsent.post}
+          </span>
+        </label>
+      </div>
+
+      <div class="sm:col-span-2">
+        <button type="submit" class="btn-primary w-full sm:w-auto">Request my free quote</button>
+        <p id={`${id}-status`} class="mt-3 text-sm" role="status" aria-live="polite"></p>
+      </div>
+    </form>
+
+    <p class="mt-4 text-sm text-ink/70">
+      Prefer to talk? Call <a class="link-inline" href={`tel:${phone.tel}`}>{phone.display}</a>.
+    </p>
+  </div>
+</section>
+
+<script is:inline define:vars={{ formId: `${id}-form`, statusId: `${id}-status`, redirectUrl }}>
+  (function () {
+    var form = document.getElementById(formId);
+    if (!form) return;
+    var status = document.getElementById(statusId);
+    form.addEventListener('submit', function (e) {
+      // Let the browser enforce required fields (incl. TCPA consent) first.
+      if (!form.reportValidity()) return;
+      e.preventDefault();
+      var btn = form.querySelector('button[type="submit"]');
+      if (btn) { btn.disabled = true; btn.textContent = 'Sending...'; }
+      if (status) { status.textContent = ''; status.style.color = ''; }
+
+      var data = new FormData(form);
+      fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: data,
+        headers: { Accept: 'application/json' },
+      })
+        .then(function (r) { return r.json(); })
+        .then(function (json) {
+          if (json && json.success) {
+            if (typeof window.gtag === 'function') {
+              window.gtag('event', 'generate_lead', {
+                event_category: 'quote_form',
+                event_label: 'quote_request',
+              });
+            }
+            window.location.href = redirectUrl;
+          } else {
+            if (status) {
+              status.style.color = '#a8721f';
+              status.textContent = (json && json.message) || 'Something went wrong. Please call us or try again.';
+            }
+            if (btn) { btn.disabled = false; btn.textContent = 'Request my free quote'; }
+          }
+        })
+        .catch(function () {
+          if (status) {
+            status.style.color = '#a8721f';
+            status.textContent = 'Network error. Please call us or try again.';
+          }
+          if (btn) { btn.disabled = false; btn.textContent = 'Request my free quote'; }
+        });
+    });
+  })();
+</script>

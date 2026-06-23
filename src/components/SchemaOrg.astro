@@ -1,0 +1,14 @@
+---
+/*
+  Renders a single JSON-LD block. Pass a schema object built by src/lib/schema.ts.
+  Multiple blocks per page are fine; use one <SchemaOrg> per object.
+*/
+interface Props {
+  schema: Record<string, unknown>;
+}
+const { schema } = Astro.props;
+---
+<script
+  type="application/ld+json"
+  set:html={JSON.stringify(schema)}
+/>

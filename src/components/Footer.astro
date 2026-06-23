@@ -1,0 +1,98 @@
+---
+/*
+  Global footer. Appears on every page.
+  Includes the verbatim entity disclaimer required by COMPLIANCE_STANDARDS.md.
+*/
+import { site, phone, compliance } from '../data/site';
+import { services } from '../data/services';
+import { guides } from '../data/guides';
+
+const year = new Date().getFullYear();
+
+const company = [
+  { label: 'About', href: '/about/' },
+  { label: 'Contact', href: '/contact/' },
+  { label: 'Service Areas', href: '/locations/' },
+  { label: 'Privacy Policy', href: '/privacy/' },
+  { label: 'Terms of Service', href: '/terms/' },
+  { label: 'Disclosure', href: '/disclosure/' },
+];
+---
+<footer class="mt-20 bg-spring-dark text-mist">
+  <div class="container-x py-12">
+    <div class="grid gap-10 md:grid-cols-2 lg:grid-cols-4">
+      <!-- Brand + contact -->
+      <div>
+        <p class="font-heading text-lg font-bold text-white">{site.brandName}</p>
+        <p class="mt-3 text-sm leading-relaxed text-mist/80">
+          A free service that connects {site.county} property owners with
+          licensed local septic contractors for new system installation,
+          drainfield replacement, and advanced treatment systems.
+        </p>
+        <a
+          href={`tel:${phone.tel}`}
+          class="mt-4 inline-flex items-center gap-2 font-heading text-lg font-semibold text-white hover:text-ochre"
+        >
+          {phone.display}
+        </a>
+      </div>
+
+      <!-- Services -->
+      <nav aria-label="Services">
+        <p class="font-heading text-sm font-semibold uppercase tracking-wide text-ochre">
+          Services
+        </p>
+        <ul class="mt-3 space-y-2 text-sm">
+          {services.map((s) => (
+            <li>
+              <a class="text-mist/85 hover:text-white" href={`/services/${s.slug}/`}>
+                {s.name}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+
+      <!-- Guides -->
+      <nav aria-label="Guides">
+        <p class="font-heading text-sm font-semibold uppercase tracking-wide text-ochre">
+          Guides
+        </p>
+        <ul class="mt-3 space-y-2 text-sm">
+          {guides.map((g) => (
+            <li>
+              <a class="text-mist/85 hover:text-white" href={`/guides/${g.slug}/`}>
+                {g.navLabel}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+
+      <!-- Company -->
+      <nav aria-label="Company">
+        <p class="font-heading text-sm font-semibold uppercase tracking-wide text-ochre">
+          Company
+        </p>
+        <ul class="mt-3 space-y-2 text-sm">
+          {company.map((c) => (
+            <li>
+              <a class="text-mist/85 hover:text-white" href={c.href}>{c.label}</a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+    </div>
+
+    <!-- Entity disclaimer (verbatim, required sitewide) -->
+    <div class="mt-10 border-t border-white/15 pt-6">
+      <p class="text-xs leading-relaxed text-mist/70">
+        {compliance.footerDisclaimer}
+      </p>
+      <p class="mt-4 text-xs text-mist/60">
+        &copy; {year} {site.entity.legalName}. {site.brandName} is a marketing
+        service, not a septic contractor.
+      </p>
+    </div>
+  </div>
+</footer>

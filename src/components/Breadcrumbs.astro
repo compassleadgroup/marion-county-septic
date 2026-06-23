@@ -1,0 +1,35 @@
+---
+/*
+  Visual breadcrumbs + BreadcrumbList JSON-LD. Used on every non-home page.
+  Pass the full trail including Home and the current page. The last item is
+  rendered as the current page (not a link) but still included in the schema.
+*/
+import SchemaOrg from './SchemaOrg.astro';
+import { buildBreadcrumb, type BreadcrumbItem } from '../lib/schema';
+
+interface Props {
+  items: BreadcrumbItem[];
+}
+const { items } = Astro.props;
+const schema = buildBreadcrumb(items);
+---
+<nav aria-label="Breadcrumb" class="container-x pt-5">
+  <ol class="flex flex-wrap items-center gap-x-2 gap-y-1 text-sm text-ink/70">
+    {items.map((item, i) => {
+      const isLast = i === items.length - 1;
+      return (
+        <li class="flex items-center gap-x-2">
+          {isLast ? (
+            <span aria-current="page" class="font-medium text-spring-dark">{item.name}</span>
+          ) : (
+            <a href={item.path} class="hover:text-spring hover:underline">{item.name}</a>
+          )}
+          {!isLast && (
+            <span aria-hidden="true" class="text-sage">/</span>
+          )}
+        </li>
+      );
+    })}
+  </ol>
+</nav>
+<SchemaOrg schema={schema} />

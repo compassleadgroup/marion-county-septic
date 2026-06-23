@@ -1,0 +1,105 @@
+---
+/*
+  Base layout for every page. Handles head metadata, self-referencing canonical,
+  Open Graph, optional GA4, global Organization JSON-LD, and the global chrome
+  (disclosure strip, header, footer). Fonts are self-hosted (no external request).
+*/
+import '@fontsource-variable/inter';
+import '@fontsource-variable/manrope';
+import '../styles/global.css';
+
+import DisclosureStrip from '../components/DisclosureStrip.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import SchemaOrg from '../components/SchemaOrg.astro';
+import { site, keys } from '../data/site';
+import { buildOrganization } from '../lib/schema';
+
+interface Props {
+  title: string;
+  description: string;
+  /** Optional OG/social image path. Defaults to the branded image. */
+  ogImage?: string;
+  /** Set true on utility pages that should not be indexed (e.g. thank-you). */
+  noindex?: boolean;
+  /** Extra JSON-LD objects to emit on this page. */
+  schemas?: Record<string, unknown>[];
+}
+
+const {
+  title,
+  description,
+  ogImage = '/og-image.png',
+  noindex = false,
+  schemas = [],
+} = Astro.props;
+
+const canonical = new URL(Astro.url.pathname, site.url).href;
+const ogImageUrl = new URL(ogImage, site.url).href;
+const org = buildOrganization();
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <meta name="theme-color" content="#0F5257" />
+
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
+
+    <!-- Open Graph / social -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={site.brandName} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImageUrl} />
+    <meta property="og:locale" content="en_US" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageUrl} />
+
+    <!-- Global Organization schema -->
+    <SchemaOrg schema={org} />
+    {schemas.map((s) => <SchemaOrg schema={s} />)}
+
+    <!-- GA4 (only when a measurement ID is configured) -->
+    {keys.ga4 && (
+      <>
+        <script
+          is:inline
+          async
+          src={`https://www.googletagmanager.com/gtag/js?id=${keys.ga4}`}
+        ></script>
+        <script is:inline define:vars={{ ga4: keys.ga4 }}>
+          window.dataLayer = window.dataLayer || [];
+          function gtag() { dataLayer.push(arguments); }
+          gtag('js', new Date());
+          gtag('config', ga4);
+        </script>
+      </>
+    )}
+  </head>
+  <body>
+    <a
+      href="#main"
+      class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-spring focus:px-4 focus:py-2 focus:text-white"
+    >
+      Skip to content
+    </a>
+
+    <DisclosureStrip />
+    <Header />
+
+    <main id="main">
+      <slot />
+    </main>
+
+    <Footer />
+  </body>
+</html>
