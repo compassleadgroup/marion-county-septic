@@ -20,6 +20,10 @@ Confirm all three before doing anything. If any one does not match, STOP and ask
 
 This is the 6th site in the portfolio. Do not import any other site's niche language, location data, or design tokens.
 
+Before adding, replacing, or wiring any image or visual asset, read the
+"Image and Visual Asset Standards" section of COMPLIANCE_STANDARDS.md and
+apply it without exception.
+
 ---
 
 ## Document hierarchy
